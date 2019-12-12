@@ -73,10 +73,12 @@ function createCall(accountId, body, callback)
         "from": "+18888888888",
         "to": "+19999999999",
         "applicationId": "1234",
-        "answerUrl": "https://server.com/answerUrl"
+        "answerUrl": "https://server.com/answerUrl",
+        "answerMethod": "POST",
+        "callTimeout": 30
     });
 
-    var response = voiceController.createCall(accountId, body);
+    var response = await voiceController.createCall(accountId, body);
     console.log(response);
 ```
 
