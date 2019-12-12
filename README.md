@@ -212,7 +212,7 @@ function getQueryMetadataForAccountAndCall(accountId, callId, callback)
     var accountId = 'accountId';
     var callId = 'callId';
 
-    var response = voiceController.getQueryMetadataForAccountAndCall(accountId, callId);
+    var response = await voiceController.getQueryMetadataForAccountAndCall(accountId, callId);
     console.log(response[0]); 
 ```
 
