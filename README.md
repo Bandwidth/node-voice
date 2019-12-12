@@ -44,7 +44,7 @@ BandwidthVoice.Configuration.basicAuthPassword = "basicAuthPassword"; // The pas
 The singleton instance of the ``` APIController ``` class can be accessed from the API Client.
 
 ```javascript
-var controller = BandwidthVoice.APIController;
+var voiceController = BandwidthVoice.APIController;
 ```
 
 ### <a name="create_call"></a>![Method: ](https://apidocs.io/img/method.png ".APIController.createCall") createCall
@@ -76,10 +76,8 @@ function createCall(accountId, body, callback)
         "answerUrl": "https://server.com/answerUrl"
     });
 
-    controller.createCall(accountId, body, function(error, response, context) {
-
-    
-    });
+    var response = voiceController.createCall(accountId, body);
+    console.log(response);
 ```
 
 #### Errors
@@ -124,10 +122,7 @@ function modifyCall(accountId, callId, body, callback)
         "state": "completed"
     });
 
-    controller.modifyCall(accountId, callId, body, function(error, response, context) {
-
-    
-    });
+    await voiceController.modifyCall(accountId, callId, body);
 ```
 
 #### Errors
@@ -173,10 +168,7 @@ function modifyCallRecordingState(accountId, callId, body, callback)
         "state": "paused"
     });
 
-    controller.modifyCallRecordingState(accountId, callId, body, function(error, response, context) {
-
-    
-    });
+    await voiceController.modifyCallRecordingState(accountId, callId, body);
 ```
 
 #### Errors
@@ -218,10 +210,8 @@ function getQueryMetadataForAccountAndCall(accountId, callId, callback)
     var accountId = 'accountId';
     var callId = 'callId';
 
-    controller.getQueryMetadataForAccountAndCall(accountId, callId, function(error, response, context) {
-
-    
-    });
+    var response = voiceController.getQueryMetadataForAccountAndCall(accountId, callId);
+    console.log(response[0]); 
 ```
 
 #### Errors
@@ -264,10 +254,8 @@ function getMetadataForRecording(accountId, callId, recordingId, callback)
     var callId = 'callId';
     var recordingId = 'recordingId';
 
-    controller.getMetadataForRecording(accountId, callId, recordingId, function(error, response, context) {
-
-    
-    });
+    var response = await voiceController.getMetadataForRecording(accountId, callId, recordingId);
+    console.log(response);
 ```
 
 #### Errors
@@ -311,10 +299,7 @@ function deleteRecording(accountId, callId, recordingId, callback)
     var callId = 'callId';
     var recordingId = 'recordingId';
 
-    controller.deleteRecording(accountId, callId, recordingId, function(error, response, context) {
-
-    
-    });
+    await voiceController.deleteRecording(accountId, callId, recordingId);
 ```
 
 #### Errors
@@ -358,9 +343,8 @@ function getStreamRecordingMedia(accountId, callId, recordingId, callback)
     var callId = 'callId';
     var recordingId = 'recordingId';
 
-    controller.getStreamRecordingMedia(accountId, callId, recordingId, function(error, response, context) {
-
-    });
+    var response = await voiceController.getStreamRecordingMedia(accountId, callId, recordingId);
+    fs.writeFileSync("file_to_write", response, "binary");
 ```
 
 #### Errors
@@ -397,13 +381,10 @@ function getQueryMetadataForAccount(accountId, callback)
 #### Example Usage
 
 ```javascript
-
     var accountId = 'accountId';
 
-    controller.getQueryMetadataForAccount(accountId, function(error, response, context) {
-
-    
-    });
+    var response = await voiceController.getQueryMetadataForAccount(accountId);
+    console.log(response[0]);
 ```
 
 #### Errors
