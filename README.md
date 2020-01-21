@@ -1,6 +1,11 @@
 # Getting started
 
+## Other Node SDKs
+* Messaging: https://github.com/Bandwidth/node-messaging
+* Numbers: https://github.com/Bandwidth/node-numbers
+
 Bandwidth's HTTP voice platform
+
 
 ```bash
 npm install @bandwidth/voice
