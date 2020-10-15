@@ -1,5 +1,8 @@
 # Getting started
 
+## Developer Docs
+* [Bandwidth API Developer Docs](https://dev.bandwidth.com)
+
 ## Other Node SDKs
 * Messaging: https://github.com/Bandwidth/node-messaging
 * Numbers: https://github.com/Bandwidth/node-numbers
