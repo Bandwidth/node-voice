@@ -1,0 +1,21 @@
+name: Validate/Test SDK
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+      - 'main'
+
+jobs:
+  deploy:
+    name: Validate/Test SDK
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: NPM Install
+      run: npm Install
+    - name: Check SDK
+      run: |
+           npm run build
+           npm run test --if-present
