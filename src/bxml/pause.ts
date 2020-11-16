@@ -2,7 +2,7 @@ import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
 export class Pause implements Verb {
-    duration: string | undefined
+    duration?: string
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

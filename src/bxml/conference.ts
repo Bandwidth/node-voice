@@ -4,29 +4,29 @@ import { Verb } from './interfaces';
 export class Conference implements Verb {
     name = ''
 
-    username: string | undefined
+    username?: string
 
-    password: string | undefined
+    password?: string
 
-    tag: string | undefined
+    tag?: string
 
-    mute: string | undefined
+    mute?: string
 
-    hold: string | undefined
+    hold?: string
 
     callIdsToCoach: string[] | undefined = []
 
-    conferenceEventUrl: string | undefined
+    conferenceEventUrl?: string
 
-    conferenceEventMethod: string | undefined
+    conferenceEventMethod?: string
 
-    conferenceEventFallbackUrl: string | undefined
+    conferenceEventFallbackUrl?: string
 
-    conferenceEventFallbackMethod: string | undefined
+    conferenceEventFallbackMethod?: string
 
-    fallbackUsername: string | undefined
+    fallbackUsername?: string
 
-    fallbackPassword: string | undefined
+    fallbackPassword?: string
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

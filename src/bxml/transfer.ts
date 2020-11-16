@@ -1,34 +1,81 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export class Transfer implements Verb {
-    transferCallerId: string | undefined
+export interface TransferOptions extends Verb {
+    transferCallerId?: string
 
-    callTimeout: number | undefined
+    callTimeout?: number
 
-    tag: string | undefined
+    tag?: string
 
-    transferCompleteUrl: string | undefined
+    transferCompleteUrl?: string
 
-    transferCompleteMethod: string | undefined
+    transferCompleteMethod?: string
 
-    username: string | undefined
+    username?: string
 
-    password: string | undefined
+    password?: string
 
-    diversionTreatment: string | undefined
+    diversionTreatment?: string
 
-    diversionReason: string | undefined
+    diversionReason?: string
 
-    phoneNumbers: Transfer.PhoneNumber[] = []
+    phoneNumbers: Transfer.PhoneNumber[]
 
-    transferCompleteFallbackUrl: string | undefined
+    transferCompleteFallbackUrl?: string
 
-    transferCompleteFallbackMethod: string | undefined
+    transferCompleteFallbackMethod?: string
 
-    fallbackUsername: string | undefined
+    fallbackUsername?: string
 
-    fallbackPassword: string | undefined
+    fallbackPassword?: string
+}
+
+export class Transfer implements TransferOptions {
+    transferCallerId?: string
+
+    callTimeout?: number
+
+    tag?: string
+
+    transferCompleteUrl?: string
+
+    transferCompleteMethod?: string
+
+    username?: string
+
+    password?: string
+
+    diversionTreatment?: string
+
+    diversionReason?: string
+
+    phoneNumbers: Transfer.PhoneNumber[]
+
+    transferCompleteFallbackUrl?: string
+
+    transferCompleteFallbackMethod?: string
+
+    fallbackUsername?: string
+
+    fallbackPassword?: string
+
+    constructor(options: TransferOptions) {
+        this.phoneNumbers = options.phoneNumbers
+        this.callTimeout = options.callTimeout
+        this.diversionReason = options.diversionReason
+        this.diversionTreatment = options.diversionTreatment
+        this.fallbackPassword = options.fallbackPassword
+        this.fallbackUsername = options.fallbackUsername
+        this.password = options.password
+        this.username = options.username
+        this.tag = options.tag
+        this.transferCallerId = options.transferCallerId
+        this.transferCompleteFallbackMethod = options.transferCompleteFallbackMethod
+        this.transferCompleteFallbackUrl = options.transferCompleteFallbackUrl
+        this.transferCompleteMethod = options.transferCompleteMethod
+        this.transferCompleteUrl = options.transferCompleteUrl
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}
@@ -99,31 +146,71 @@ export class Transfer implements Verb {
 
 export module Transfer {
 
-    export class PhoneNumber implements Verb  {
+    export interface PhoneNumberOptions extends Verb  {
+        number: string
 
-        number: string | undefined
+        transferAnswerUrl?: string
 
-        transferAnswerUrl: string | undefined
+        transferAnswerMethod?: string
 
-        transferAnswerMethod: string | undefined
+        username?: string
 
-        username: string | undefined
+        password?: string
 
-        password: string | undefined
+        tag?: string
 
-        tag: string | undefined
+        transferDisconnectUrl?: string
 
-        transferDisconnectUrl: string | undefined
+        transferDisconnectMethod?: string
 
-        transferDisconnectMethod: string | undefined
+        transferAnswerFallbackUrl?: string
 
-        transferAnswerFallbackUrl: string | undefined
+        transferAnswerFallbackMethod?: string
 
-        transferAnswerFallbackMethod: string | undefined
+        fallbackUsername?: string
 
-        fallbackUsername: string | undefined
+        fallbackPassword?: string
+    }
 
-        fallbackPassword: string | undefined
+    export class PhoneNumber implements PhoneNumberOptions  {
+        number: string 
+
+        transferAnswerUrl?: string
+
+        transferAnswerMethod?: string
+
+        username?: string
+
+        password?: string
+
+        tag?: string
+
+        transferDisconnectUrl?: string
+
+        transferDisconnectMethod?: string
+
+        transferAnswerFallbackUrl?: string
+
+        transferAnswerFallbackMethod?: string
+
+        fallbackUsername?: string
+
+        fallbackPassword?: string
+
+        constructor(options :PhoneNumberOptions) {
+            this.number = options.number
+            this.fallbackPassword = options.fallbackPassword
+            this.fallbackUsername = options.fallbackUsername
+            this.password = options.password
+            this.username = options.username
+            this.tag = options.tag
+            this.transferAnswerFallbackMethod = options.transferAnswerFallbackMethod
+            this.transferAnswerFallbackUrl = options.transferAnswerFallbackUrl
+            this.transferAnswerMethod = options.transferAnswerMethod
+            this.transferAnswerUrl = options.transferAnswerUrl
+            this.transferDisconnectMethod = options.transferDisconnectMethod
+            this.transferDisconnectUrl = options.transferDisconnectUrl
+        }
 
 
         addXml(xml: XMLElement) {

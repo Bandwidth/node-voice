@@ -2,15 +2,15 @@ import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
 export class StartGather implements Verb {
-    dtmfUrl: string | undefined
+    dtmfUrl?: string
 
-    dtmfMethod: string | undefined
+    dtmfMethod?: string
 
-    username: string | undefined
+    username?: string
 
-    password: string | undefined
+    password?: string
 
-    tag: string | undefined
+    tag?: string
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

@@ -1,26 +1,61 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export class StartRecording implements Verb {
-    recordingAvailableUrl: string | undefined
+export interface StartRecordingOptions extends Verb {
+    recordingAvailableUrl?: string
 
-    recordingAvailableMethod: string | undefined
+    recordingAvailableMethod?: string
 
-    username: string | undefined
+    username?: string
 
-    password: string | undefined
+    password?: string
 
-    tag: string | undefined
+    tag?: string
 
-    fileFormat: string | undefined
+    fileFormat?: string
 
-    multiChannel: string | undefined
+    multiChannel?: string
 
-    transcribe: string | undefined
+    transcribe?: string
 
-    transcriptionAvailableUrl: string | undefined
+    transcriptionAvailableUrl?: string
 
-    transcriptionAvailableMethod: string | undefined
+    transcriptionAvailableMethod?: string
+}
+
+export class StartRecording implements StartRecordingOptions {
+    recordingAvailableUrl?: string
+
+    recordingAvailableMethod?: string
+
+    username?: string
+
+    password?: string
+
+    tag?: string
+
+    fileFormat?: string
+
+    multiChannel?: string
+
+    transcribe?: string
+
+    transcriptionAvailableUrl?: string
+
+    transcriptionAvailableMethod?: string
+
+    constructor(options?: StartRecordingOptions){
+        this.recordingAvailableUrl = options?.recordingAvailableUrl
+        this.recordingAvailableMethod = options?.recordingAvailableMethod
+        this.username = options?.username
+        this.password = options?.password
+        this.tag = options?.tag
+        this.fileFormat = options?.fileFormat
+        this.multiChannel = options?.multiChannel
+        this.transcribe = options?.transcribe
+        this.transcriptionAvailableUrl = options?.transcriptionAvailableUrl
+        this.transcriptionAvailableMethod = options?.transcriptionAvailableMethod
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

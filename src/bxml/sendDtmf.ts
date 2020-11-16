@@ -2,11 +2,11 @@ import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
 export class SendDtmf implements Verb {
-    dtmf: string | undefined
+    dtmf?: string
 
-    toneDuration: number | undefined
+    toneDuration?: number
 
-    toneInterval: number | undefined
+    toneInterval?: number
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

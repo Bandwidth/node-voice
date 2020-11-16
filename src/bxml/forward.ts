@@ -2,15 +2,15 @@ import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
 export class Forward implements Verb {
-    to: string | undefined
+    to?: string
     
-    from: string | undefined
+    from?: string
 
-    callTimeout: string | undefined
+    callTimeout?: string
 
-    diversionTreatment: string | undefined
+    diversionTreatment?: string
 
-    diversionReason: string | undefined
+    diversionReason?: string
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

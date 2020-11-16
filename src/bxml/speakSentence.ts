@@ -2,13 +2,13 @@ import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
 export class SpeakSentence implements Verb {
-    sentence: string | undefined
+    sentence?: string
 
-    locale: string | undefined
+    locale?: string
 
-    voice: string | undefined
+    voice?: string
 
-    gender: string | undefined
+    gender?: string
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

@@ -2,41 +2,41 @@ import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
 export class Record implements Verb {
-    recordCompleteUrl: string | undefined
+    recordCompleteUrl?: string
 
-    recordCompleteMethod: string | undefined
+    recordCompleteMethod?: string
 
-    recordingAvailableUrl: string | undefined
+    recordingAvailableUrl?: string
 
-    recordingAvailableMethod: string | undefined
+    recordingAvailableMethod?: string
 
-    username: string | undefined
+    username?: string
 
-    password: string | undefined
+    password?: string
 
-    tag: string | undefined
+    tag?: string
 
-    terminatingDigits: string | undefined
+    terminatingDigits?: string
 
-    maxDuration: number | undefined
+    maxDuration?: number
 
-    fileFormat: string | undefined
+    fileFormat?: string
 
     transcribe: boolean | undefined
 
-    transcriptionAvailableUrl: string | undefined
+    transcriptionAvailableUrl?: string
 
-    transcriptionAvailableMethod: string | undefined
+    transcriptionAvailableMethod?: string
 
-    silenceTimeout: number | undefined
+    silenceTimeout?: number
 
-    recordCompleteFallbackUrl: string | undefined
+    recordCompleteFallbackUrl?: string
 
-    recordCompleteFallbackMethod: string | undefined
+    recordCompleteFallbackMethod?: string
 
-    fallbackUsername: string | undefined
+    fallbackUsername?: string
 
-    fallbackPassword: string | undefined
+    fallbackPassword?: string
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}
