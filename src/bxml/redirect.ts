@@ -2,23 +2,23 @@ import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
 export class Redirect implements Verb {
-    username: string | undefined = undefined
+    username: string | undefined
 
-    password: string | undefined = undefined
+    password: string | undefined
 
-    redirectUrl: string | undefined = undefined
+    redirectUrl: string | undefined
 
-    redirectMethod: string | undefined = undefined
+    redirectMethod: string | undefined
 
-    tag: string | undefined = undefined
+    tag: string | undefined
 
-    redirectFallbackUrl: string | undefined = undefined
+    redirectFallbackUrl: string | undefined
 
-    redirectFallbackMethod: string | undefined = undefined
+    redirectFallbackMethod: string | undefined
 
-    fallbackUsername: string | undefined = undefined
+    fallbackUsername: string | undefined
 
-    fallbackPassword: string | undefined = undefined
+    fallbackPassword: string | undefined
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

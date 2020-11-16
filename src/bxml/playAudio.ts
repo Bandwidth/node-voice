@@ -2,11 +2,11 @@ import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
 export class PlayAudio implements Verb {
-    url: string | undefined = undefined
+    url: string | undefined
 
-    username: string | undefined = undefined
+    username: string | undefined
 
-    password: string | undefined = undefined 
+    password: string | undefined 
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

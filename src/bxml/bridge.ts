@@ -3,33 +3,33 @@ import { Verb } from './interfaces'
 
 export class Bridge implements Verb {
 
-    callId: string | undefined = undefined
+    callId: string | undefined
 
-    bridgeCompleteUrl: string | undefined = undefined
+    bridgeCompleteUrl: string | undefined
 
-    bridgeCompleteMethod: string | undefined = undefined
+    bridgeCompleteMethod: string | undefined
 
-    bridgeTargetCompleteUrl: string | undefined = undefined
+    bridgeTargetCompleteUrl: string | undefined
 
-    bridgeTargetCompleteMethod: string | undefined = undefined
+    bridgeTargetCompleteMethod: string | undefined
 
-    username: string | undefined = undefined
+    username: string | undefined
 
-    password: string | undefined = undefined
+    password: string | undefined
 
-    tag: string | undefined = undefined
+    tag: string | undefined
 
-    bridgeCompleteFallbackUrl: string | undefined = undefined
+    bridgeCompleteFallbackUrl: string | undefined
 
-    bridgeCompleteFallbackMethod: string | undefined = undefined
+    bridgeCompleteFallbackMethod: string | undefined
 
-    bridgeTargetCompleteFallbackUrl: string | undefined = undefined
+    bridgeTargetCompleteFallbackUrl: string | undefined
 
-    bridgeTargetCompleteFallbackMethod: string | undefined = undefined
+    bridgeTargetCompleteFallbackMethod: string | undefined
 
-    fallbackUsername: string | undefined = undefined
+    fallbackUsername: string | undefined
 
-    fallbackPassword: string | undefined = undefined
+    fallbackPassword: string | undefined
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

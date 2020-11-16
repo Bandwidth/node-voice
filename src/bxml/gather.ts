@@ -2,35 +2,35 @@ import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
 export class Gather implements Verb {
-    gatherUrl: string | undefined = undefined
+    gatherUrl: string | undefined
     
-    gatherMethod: string | undefined = undefined
+    gatherMethod: string | undefined
 
-    username: string | undefined = undefined
+    username: string | undefined
 
-    password: string | undefined = undefined
+    password: string | undefined
 
-    tag: string | undefined = undefined
+    tag: string | undefined
 
-    terminatingDigits: string | undefined = undefined
+    terminatingDigits: string | undefined
 
-    maxDigits: number | undefined = undefined
+    maxDigits: number | undefined
 
-    interDigitTimeout: number | undefined = undefined
+    interDigitTimeout: number | undefined
 
-    firstDigitTimeout: number | undefined = undefined
+    firstDigitTimeout: number | undefined
 
     audioProducers: Verb[] = []
 
-    repeatCount: number | undefined = undefined
+    repeatCount: number | undefined
 
-    gatherFallbackUrl: string | undefined = undefined
+    gatherFallbackUrl: string | undefined
 
-    gatherFallbackMethod: string | undefined = undefined
+    gatherFallbackMethod: string | undefined
 
-    fallbackUsername: string | undefined = undefined
+    fallbackUsername: string | undefined
 
-    fallbackPassword: string | undefined = undefined
+    fallbackPassword: string | undefined
 
 
     addXml(xml: XMLElement) {

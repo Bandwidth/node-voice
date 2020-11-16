@@ -1,9 +1,9 @@
 import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
-export class PauseRecording implements Verb {
+export class StopGather implements Verb {
     addXml(xml: XMLElement) {
-        xml.ele('PauseRecording');
-        return xml;
+        xml.ele('StopGather')
+        return xml
     }
 }

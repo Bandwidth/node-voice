@@ -1,18 +1,16 @@
 import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
-export class Pause implements Verb {
+export class Ring implements Verb {
     duration: string | undefined
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}
 
-
-        if (this.duration !== null) {
-            attributes['duration'] = `${this.duration}`
+        if (this.duration !== undefined) {
+            attributes['duration'] = this.duration
         }
 
-        xml.ele('Pause', attributes)
-        
+        xml.ele('Ring', attributes)
     }
 }

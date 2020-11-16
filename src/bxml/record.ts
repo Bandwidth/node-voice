@@ -2,41 +2,41 @@ import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
 export class Record implements Verb {
-    recordCompleteUrl: string | undefined = undefined
+    recordCompleteUrl: string | undefined
 
-    recordCompleteMethod: string | undefined = undefined
+    recordCompleteMethod: string | undefined
 
-    recordingAvailableUrl: string | undefined = undefined
+    recordingAvailableUrl: string | undefined
 
-    recordingAvailableMethod: string | undefined = undefined
+    recordingAvailableMethod: string | undefined
 
-    username: string | undefined = undefined
+    username: string | undefined
 
-    password: string | undefined = undefined
+    password: string | undefined
 
-    tag: string | undefined = undefined
+    tag: string | undefined
 
-    terminatingDigits: string | undefined = undefined
+    terminatingDigits: string | undefined
 
-    maxDuration: number | undefined = undefined
+    maxDuration: number | undefined
 
-    fileFormat: string | undefined = undefined
+    fileFormat: string | undefined
 
-    transcribe: boolean | undefined = undefined
+    transcribe: boolean | undefined
 
-    transcriptionAvailableUrl: string | undefined = undefined
+    transcriptionAvailableUrl: string | undefined
 
-    transcriptionAvailableMethod: string | undefined = undefined
+    transcriptionAvailableMethod: string | undefined
 
-    silenceTimeout: number | undefined = undefined
+    silenceTimeout: number | undefined
 
-    recordCompleteFallbackUrl: string | undefined = undefined
+    recordCompleteFallbackUrl: string | undefined
 
-    recordCompleteFallbackMethod: string | undefined = undefined
+    recordCompleteFallbackMethod: string | undefined
 
-    fallbackUsername: string | undefined = undefined
+    fallbackUsername: string | undefined
 
-    fallbackPassword: string | undefined = undefined
+    fallbackPassword: string | undefined
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}
