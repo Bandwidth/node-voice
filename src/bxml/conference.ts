@@ -14,7 +14,7 @@ export interface ConferenceOptions {
 
     hold?: string
 
-    callIdsToCoach: string[] | undefined = []
+    callIdsToCoach: string[] | undefined
 
     conferenceEventUrl?: string
 
