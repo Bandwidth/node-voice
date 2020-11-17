@@ -20,7 +20,7 @@ export interface GatherOptions {
 
     firstDigitTimeout?: number
 
-    audioProducers: Verb[]
+    audioProducers?: Verb[]
 
     repeatCount?: number
 
