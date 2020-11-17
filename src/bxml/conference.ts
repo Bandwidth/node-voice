@@ -29,7 +29,7 @@ export interface ConferenceOptions {
     fallbackPassword?: string
 }
 
-export class Conference implements Verb {
+export class Conference implements ConferenceOptions, Verb {
     name: string
 
     username?: string

@@ -31,7 +31,7 @@ export interface BridgeOptions {
     fallbackPassword?: string
 }
 
-export class Bridge implements Verb {
+export class Bridge implements BridgeOptions, Verb {
 
     callId: string
 

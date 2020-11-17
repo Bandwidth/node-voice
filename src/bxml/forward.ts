@@ -13,7 +13,7 @@ export interface ForwardOptions {
     diversionReason?: string
 }
 
-export class Forward implements Verb {
+export class Forward implements ForwardOptions, Verb {
     to: string
     
     from?: string
