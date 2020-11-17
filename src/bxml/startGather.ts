@@ -1,8 +1,8 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export class StartGather implements Verb {
-    dtmfUrl?: string
+export interface StartGatherOptions {
+    dtmfUrl: string
 
     dtmfMethod?: string
 
@@ -11,6 +11,26 @@ export class StartGather implements Verb {
     password?: string
 
     tag?: string
+}
+
+export class StartGather implements StartGatherOptions, Verb {
+    dtmfUrl: string
+
+    dtmfMethod?: string
+
+    username?: string
+
+    password?: string
+
+    tag?: string
+
+    constructor(options: StartGatherOptions){
+        this.dtmfUrl = options.dtmfUrl
+        this.dtmfMethod = options.dtmfMethod
+        this.username = options.username
+        this.password = options.password
+        this.tag = options.tag
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

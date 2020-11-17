@@ -1,8 +1,16 @@
 import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
-export class Pause implements Verb {
-    duration?: string
+export interface PauseOptions {
+    duration?: number
+}
+
+export class Pause implements PauseOptions, Verb {
+    duration?: number
+
+    constructor(options: PauseOptions) {
+        this.duration = options.duration
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

@@ -1,7 +1,7 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export class Gather implements Verb {
+export interface GatherOptions {
     gatherUrl?: string
     
     gatherMethod?: string
@@ -20,7 +20,7 @@ export class Gather implements Verb {
 
     firstDigitTimeout?: number
 
-    audioProducers: Verb[] = []
+    audioProducers: Verb[]
 
     repeatCount?: number
 
@@ -31,6 +31,56 @@ export class Gather implements Verb {
     fallbackUsername?: string
 
     fallbackPassword?: string
+}
+
+export class Gather implements GatherOptions, Verb {
+    gatherUrl?: string
+    
+    gatherMethod?: string
+
+    username?: string
+
+    password?: string
+
+    tag?: string
+
+    terminatingDigits?: string
+
+    maxDigits?: number
+
+    interDigitTimeout?: number
+
+    firstDigitTimeout?: number
+
+    audioProducers: Verb[]
+
+    repeatCount?: number
+
+    gatherFallbackUrl?: string
+
+    gatherFallbackMethod?: string
+
+    fallbackUsername?: string
+
+    fallbackPassword?: string
+
+    constructor(options?: GatherOptions) {
+        this.gatherUrl = options?.gatherUrl
+        this.gatherMethod = options?.gatherMethod
+        this.username = options?.username
+        this.password = options?.password
+        this.tag = options?.tag
+        this.terminatingDigits = options?.terminatingDigits
+        this.maxDigits = options?.maxDigits
+        this.interDigitTimeout = options?.interDigitTimeout
+        this.firstDigitTimeout = options?.firstDigitTimeout
+        this.audioProducers = options?.audioProducers || []
+        this.repeatCount = options?.repeatCount
+        this.gatherFallbackUrl = options?.gatherFallbackUrl
+        this.gatherFallbackMethod = options?.gatherFallbackMethod
+        this.fallbackUsername = options?.fallbackUsername
+        this.fallbackPassword = options?.fallbackPassword
+    }
 
 
     addXml(xml: XMLElement) {

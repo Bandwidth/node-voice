@@ -1,7 +1,7 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export interface TransferOptions extends Verb {
+export interface TransferOptions  {
     transferCallerId?: string
 
     callTimeout?: number
@@ -31,7 +31,7 @@ export interface TransferOptions extends Verb {
     fallbackPassword?: string
 }
 
-export class Transfer implements TransferOptions {
+export class Transfer implements TransferOptions, Verb {
     transferCallerId?: string
 
     callTimeout?: number
@@ -146,7 +146,7 @@ export class Transfer implements TransferOptions {
 
 export module Transfer {
 
-    export interface PhoneNumberOptions extends Verb  {
+    export interface PhoneNumberOptions  {
         number: string
 
         transferAnswerUrl?: string
@@ -172,7 +172,7 @@ export module Transfer {
         fallbackPassword?: string
     }
 
-    export class PhoneNumber implements PhoneNumberOptions  {
+    export class PhoneNumber implements PhoneNumberOptions, Verb   {
         number: string 
 
         transferAnswerUrl?: string

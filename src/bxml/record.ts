@@ -1,7 +1,7 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export class Record implements Verb {
+export interface RecordOptions {
     recordCompleteUrl?: string
 
     recordCompleteMethod?: string
@@ -37,6 +37,65 @@ export class Record implements Verb {
     fallbackUsername?: string
 
     fallbackPassword?: string
+}
+
+export class Record implements RecordOptions, Verb {
+    recordCompleteUrl?: string
+
+    recordCompleteMethod?: string
+
+    recordingAvailableUrl?: string
+
+    recordingAvailableMethod?: string
+
+    username?: string
+
+    password?: string
+
+    tag?: string
+
+    terminatingDigits?: string
+
+    maxDuration?: number
+
+    fileFormat?: string
+
+    transcribe: boolean | undefined
+
+    transcriptionAvailableUrl?: string
+
+    transcriptionAvailableMethod?: string
+
+    silenceTimeout?: number
+
+    recordCompleteFallbackUrl?: string
+
+    recordCompleteFallbackMethod?: string
+
+    fallbackUsername?: string
+
+    fallbackPassword?: string
+
+    constructor(options?: RecordOptions) {
+        this.recordCompleteUrl = options?.recordCompleteUrl
+        this.recordCompleteMethod = options?.recordCompleteMethod
+        this.recordingAvailableUrl = options?.recordingAvailableUrl
+        this.recordingAvailableMethod = options?.recordingAvailableMethod
+        this.username = options?.username
+        this.password = options?.password
+        this.tag = options?.tag
+        this.terminatingDigits = options?.terminatingDigits
+        this.maxDuration= options?.maxDuration
+        this.fileFormat = options?.fileFormat
+        this.transcribe = options?.transcribe
+        this.transcriptionAvailableUrl = options?.transcriptionAvailableUrl
+        this.transcriptionAvailableMethod = options?.transcriptionAvailableMethod
+        this.silenceTimeout = options?.silenceTimeout
+        this.recordCompleteFallbackUrl = options?.recordCompleteFallbackUrl
+        this.recordCompleteFallbackMethod = options?.recordCompleteFallbackMethod
+        this.fallbackUsername = options?.fallbackUsername
+        this.fallbackPassword = options?.fallbackPassword
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

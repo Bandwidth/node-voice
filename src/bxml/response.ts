@@ -5,6 +5,11 @@ export class Response {
 
     verbs: Verb[] = []
 
+    constructor(...verbs: Verb[]) {
+        if (verbs)
+            this.verbs = verbs
+    }
+
     add(verb: Verb){
         this.verbs.push(verb)
     }

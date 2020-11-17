@@ -1,8 +1,8 @@
 import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
-export class Forward implements Verb {
-    to?: string
+export interface ForwardOptions {
+    to: string
     
     from?: string
 
@@ -11,6 +11,26 @@ export class Forward implements Verb {
     diversionTreatment?: string
 
     diversionReason?: string
+}
+
+export class Forward implements Verb {
+    to: string
+    
+    from?: string
+
+    callTimeout?: string
+
+    diversionTreatment?: string
+
+    diversionReason?: string
+
+    constructor(options: ForwardOptions) {
+        this.to = options.to
+        this.from = options.from
+        this.callTimeout = options.callTimeout
+        this.diversionReason = options.diversionReason
+        this.diversionTreatment = options.diversionTreatment
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

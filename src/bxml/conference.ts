@@ -1,8 +1,8 @@
 import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
-export class Conference implements Verb {
-    name = ''
+export interface ConferenceOptions {
+    name: string
 
     username?: string
 
@@ -27,6 +27,50 @@ export class Conference implements Verb {
     fallbackUsername?: string
 
     fallbackPassword?: string
+}
+
+export class Conference implements Verb {
+    name: string
+
+    username?: string
+
+    password?: string
+
+    tag?: string
+
+    mute?: string
+
+    hold?: string
+
+    callIdsToCoach: string[] = []
+
+    conferenceEventUrl?: string
+
+    conferenceEventMethod?: string
+
+    conferenceEventFallbackUrl?: string
+
+    conferenceEventFallbackMethod?: string
+
+    fallbackUsername?: string
+
+    fallbackPassword?: string
+
+    constructor(options: ConferenceOptions) {
+        this.name = options.name
+        this.username = options.username
+        this.password = options.password
+        this.tag = options.tag
+        this.mute = options.mute
+        this.hold = options.hold
+        this.callIdsToCoach = options.callIdsToCoach || []
+        this.conferenceEventUrl = options.conferenceEventUrl
+        this.conferenceEventMethod = options.conferenceEventMethod
+        this.conferenceEventFallbackUrl = options.conferenceEventFallbackUrl
+        this.conferenceEventFallbackMethod = options.conferenceEventFallbackMethod
+        this.fallbackUsername = options.fallbackUsername
+        this.fallbackPassword = options.fallbackPassword
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

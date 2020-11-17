@@ -1,14 +1,31 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export class SpeakSentence implements Verb {
-    sentence?: string
+export interface SpeakSentenceOptions {
+    sentence: string
 
     locale?: string
 
     voice?: string
 
     gender?: string
+}
+
+export class SpeakSentence implements SpeakSentenceOptions, Verb {
+    sentence: string
+
+    locale?: string
+
+    voice?: string
+
+    gender?: string
+
+    constructor(options: SpeakSentenceOptions) {
+        this.sentence = options.sentence
+        this.locale = options.locale
+        this.voice = options.voice
+        this.gender = options.gender
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

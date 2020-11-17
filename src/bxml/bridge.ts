@@ -1,9 +1,8 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export class Bridge implements Verb {
-
-    callId?: string
+export interface BridgeOptions {
+    callId: string
 
     bridgeCompleteUrl?: string
 
@@ -30,6 +29,54 @@ export class Bridge implements Verb {
     fallbackUsername?: string
 
     fallbackPassword?: string
+}
+
+export class Bridge implements Verb {
+
+    callId: string
+
+    bridgeCompleteUrl?: string
+
+    bridgeCompleteMethod?: string
+
+    bridgeTargetCompleteUrl?: string
+
+    bridgeTargetCompleteMethod?: string
+
+    username?: string
+
+    password?: string
+
+    tag?: string
+
+    bridgeCompleteFallbackUrl?: string
+
+    bridgeCompleteFallbackMethod?: string
+
+    bridgeTargetCompleteFallbackUrl?: string
+
+    bridgeTargetCompleteFallbackMethod?: string
+
+    fallbackUsername?: string
+
+    fallbackPassword?: string
+
+    constructor(options: BridgeOptions) {
+        this.callId = options.callId
+        this.bridgeCompleteUrl = options.bridgeCompleteUrl
+        this.bridgeCompleteMethod = options.bridgeCompleteMethod
+        this.bridgeTargetCompleteUrl = options.bridgeTargetCompleteUrl
+        this.bridgeTargetCompleteMethod = options.bridgeTargetCompleteMethod
+        this.username = options.username
+        this.password = options.password
+        this.tag = options.tag
+        this.bridgeCompleteFallbackUrl = options.bridgeCompleteFallbackUrl
+        this.bridgeCompleteFallbackMethod = options.bridgeCompleteFallbackMethod
+        this.bridgeTargetCompleteFallbackUrl = options.bridgeTargetCompleteFallbackUrl
+        this.bridgeTargetCompleteFallbackMethod = options.bridgeTargetCompleteFallbackMethod
+        this.fallbackUsername = options.fallbackUsername
+        this.fallbackPassword = options.fallbackPassword
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

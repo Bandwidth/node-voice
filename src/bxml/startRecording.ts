@@ -1,7 +1,7 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export interface StartRecordingOptions extends Verb {
+export interface StartRecordingOptions {
     recordingAvailableUrl?: string
 
     recordingAvailableMethod?: string
@@ -23,7 +23,7 @@ export interface StartRecordingOptions extends Verb {
     transcriptionAvailableMethod?: string
 }
 
-export class StartRecording implements StartRecordingOptions {
+export class StartRecording implements StartRecordingOptions, Verb {
     recordingAvailableUrl?: string
 
     recordingAvailableMethod?: string

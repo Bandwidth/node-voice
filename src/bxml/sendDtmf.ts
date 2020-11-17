@@ -1,12 +1,26 @@
 import { XMLElement } from 'xmlbuilder';
 import { Verb } from './interfaces';
 
-export class SendDtmf implements Verb {
-    dtmf?: string
+export interface SendDtmfOptions {
+    dtmf: string
 
     toneDuration?: number
 
     toneInterval?: number
+}
+
+export class SendDtmf implements SendDtmfOptions, Verb {
+    dtmf: string
+
+    toneDuration?: number
+
+    toneInterval?: number
+
+    constructor(options: SendDtmfOptions) {
+        this.dtmf = options.dtmf
+        this.toneDuration = options.toneDuration
+        this.toneInterval = options.toneInterval
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}

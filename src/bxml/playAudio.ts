@@ -1,12 +1,26 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './interfaces'
 
-export class PlayAudio implements Verb {
-    url?: string
+export interface PlayAudioOptions {
+    url: string
 
     username?: string
 
     password?: string 
+}
+
+export class PlayAudio implements PlayAudioOptions, Verb {
+    url: string
+
+    username?: string
+
+    password?: string 
+
+    constructor(options: PlayAudioOptions) {
+        this.username = options.username
+        this.password = options.password
+        this.url = options.url
+    }
 
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}
