@@ -44,3 +44,4 @@ export { StatusEnum } from './models/statusEnum';
 export { Transcript } from './models/transcript';
 export { Transcription } from './models/transcription';
 export { TranscriptionResponse } from './models/transcriptionResponse';
+export * from './bxml'
