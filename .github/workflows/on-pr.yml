@@ -13,9 +13,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: NPM Install
-      run: npm Install
     - name: Check SDK
       run: |
+           npm install
            npm run build
            npm run test --if-present
