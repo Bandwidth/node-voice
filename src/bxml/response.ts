@@ -1,5 +1,5 @@
 import xmlbuilder from 'xmlbuilder';
-import { Verb } from './interfaces';
+import { Verb } from './Verb';
 
 export class Response {
 
