@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "tsdx build",
-    "test": "tsdx test",
+    "testdx": "tsdx test",
     "lint": "tsdx lint src",
     "prepare": "tsdx build"
   },
