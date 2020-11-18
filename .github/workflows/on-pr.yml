@@ -6,7 +6,7 @@ on:
       - 'master'
       - 'main'
 
-jobs:s
+jobs:
   build-and-test-sdk:
     name: Validate/Test SDK
     runs-on: ubuntu-latest
