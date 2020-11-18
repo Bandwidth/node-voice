@@ -10,7 +10,7 @@ export interface ConferenceOptions {
 
     tag?: string
 
-    mute?: string
+    mute?: boolean
 
     hold?: string
 
@@ -38,7 +38,7 @@ export class Conference implements ConferenceOptions, Verb {
 
     tag?: string
 
-    mute?: string
+    mute?: boolean
 
     hold?: string
 
@@ -88,7 +88,7 @@ export class Conference implements ConferenceOptions, Verb {
         }
 
         if (this.mute !== undefined) {
-            attributes['mute'] = this.mute
+            attributes['mute'] = `${this.mute}`
         }
 
         if (this.hold !== undefined) {

@@ -14,7 +14,7 @@ export interface StartRecordingOptions {
 
     fileFormat?: string
 
-    multiChannel?: string
+    multiChannel?: boolean
 
     transcribe?: string
 
@@ -36,7 +36,7 @@ export class StartRecording implements StartRecordingOptions, Verb {
 
     fileFormat?: string
 
-    multiChannel?: string
+    multiChannel?: boolean
 
     transcribe?: string
 
@@ -85,7 +85,7 @@ export class StartRecording implements StartRecordingOptions, Verb {
         }
 
         if (this.multiChannel !== undefined) {
-            attributes['multiChannel'] = this.multiChannel
+            attributes['multiChannel'] = `${this.multiChannel}`
         }
 
         if (this.transcribe !== undefined) {
