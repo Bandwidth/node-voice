@@ -81,63 +81,63 @@ export class Transfer implements TransferOptions, Verb {
         const attributes: {[key: string]: string} = {}
 
         if (this.transferCallerId !== undefined) {
-            attributes['transferCallerId'] = this.transferCallerId;
+            attributes['transferCallerId'] = this.transferCallerId
         }
 
         if (this.callTimeout !== undefined) {
-            attributes['callTimeout'] = `${this.callTimeout}`;
+            attributes['callTimeout'] = `${this.callTimeout}`
         }
 
         if (this.tag !== undefined) {
-            attributes['tag'] = this.tag;
+            attributes['tag'] = this.tag
         }
 
         if (this.transferCompleteUrl !== undefined) {
-            attributes['transferCompleteUrl'] = this.transferCompleteUrl;
+            attributes['transferCompleteUrl'] = this.transferCompleteUrl
         }
 
         if (this.transferCompleteMethod !== undefined) {
-            attributes['transferCompleteMethod'] = this.transferCompleteMethod;
+            attributes['transferCompleteMethod'] = this.transferCompleteMethod
         }
 
         if (this.username !== undefined) {
-            attributes['username'] = this.username;
+            attributes['username'] = this.username
         }
 
         if (this.password !== undefined) {
-            attributes['password'] = this.password;
+            attributes['password'] = this.password
         }
 
         if (this.diversionTreatment !== undefined) {
-            attributes['diversionTreatment'] = this.diversionTreatment;
+            attributes['diversionTreatment'] = this.diversionTreatment
         }
 
         if (this.diversionReason !== undefined) {
-            attributes['diversionReason'] = this.diversionReason;
+            attributes['diversionReason'] = this.diversionReason
         }
 
         if (this.transferCompleteFallbackUrl !== undefined) {
-            attributes['transferCompleteFallbackUrl'] = this.transferCompleteFallbackUrl;
+            attributes['transferCompleteFallbackUrl'] = this.transferCompleteFallbackUrl
         }
 
         if (this.transferCompleteFallbackMethod !== undefined) {
-            attributes['transferCompleteFallbackMethod'] = this.transferCompleteFallbackMethod;
+            attributes['transferCompleteFallbackMethod'] = this.transferCompleteFallbackMethod
         }
 
         if (this.fallbackUsername !== undefined) {
-            attributes['fallbackUsername'] = this.fallbackUsername;
+            attributes['fallbackUsername'] = this.fallbackUsername
         }
 
         if (this.fallbackPassword !== undefined) {
-            attributes['fallbackPassword'] = this.fallbackPassword;
+            attributes['fallbackPassword'] = this.fallbackPassword
         }
 
         //Generating the element allows the PhoneNumber tags
         //to be added easily
-        var ele = xml.ele('Transfer', attributes);
+        var ele = xml.ele('Transfer', attributes)
 
-        for (var i = 0; i < this.phoneNumbers.length; i++) {
-            this.phoneNumbers[i].addXml(ele);
+        for (const phoneNumber of this.phoneNumbers) {
+            phoneNumber.addXml(ele)
         }
     }
 
@@ -218,50 +218,50 @@ export module Transfer {
 
 
             if (this.transferAnswerUrl !== undefined) {
-                attributes['transferAnswerUrl'] = this.transferAnswerUrl;
+                attributes['transferAnswerUrl'] = this.transferAnswerUrl
             }
 
             if (this.transferAnswerMethod !== undefined) {
-                attributes['transferAnswerMethod'] = this.transferAnswerMethod;
+                attributes['transferAnswerMethod'] = this.transferAnswerMethod
             }
 
             if (this.transferDisconnectUrl !== undefined) {
-                attributes['transferDisconnectUrl'] = this.transferDisconnectUrl;
+                attributes['transferDisconnectUrl'] = this.transferDisconnectUrl
             }
 
             if (this.transferDisconnectMethod !== undefined) {
-                attributes['transferDisconnectMethod'] = this.transferDisconnectMethod;
+                attributes['transferDisconnectMethod'] = this.transferDisconnectMethod
             }
 
             if (this.username !== undefined) {
-                attributes['username'] = this.username;
+                attributes['username'] = this.username
             }
 
             if (this.password !== undefined) {
-                attributes['password'] = this.password;
+                attributes['password'] = this.password
             }
 
             if (this.tag !== undefined) {
-                attributes['tag'] = this.tag;
+                attributes['tag'] = this.tag
             }
 
             if (this.transferAnswerFallbackUrl !== undefined) {
-                attributes['transferAnswerFallbackUrl'] = this.transferAnswerFallbackUrl;
+                attributes['transferAnswerFallbackUrl'] = this.transferAnswerFallbackUrl
             }
 
             if (this.transferAnswerFallbackMethod !== undefined) {
-                attributes['transferAnswerFallbackMethod'] = this.transferAnswerFallbackMethod;
+                attributes['transferAnswerFallbackMethod'] = this.transferAnswerFallbackMethod
             }
 
             if (this.fallbackUsername !== undefined) {
-                attributes['fallbackUsername'] = this.fallbackUsername;
+                attributes['fallbackUsername'] = this.fallbackUsername
             }
 
             if (this.fallbackPassword !== undefined) {
-                attributes['fallbackPassword'] = this.fallbackPassword;
+                attributes['fallbackPassword'] = this.fallbackPassword
             }
 
-            xml.ele('PhoneNumber', attributes, this.number);
+            xml.ele('PhoneNumber', attributes, this.number)
         }
     }
 

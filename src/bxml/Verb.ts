@@ -1,4 +1,4 @@
-import { XMLElement } from 'xmlbuilder';
+import { XMLElement } from 'xmlbuilder'
 
 export interface Verb {
     addXml(xml: XMLElement): void

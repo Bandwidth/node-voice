@@ -1,5 +1,5 @@
-import { XMLElement } from 'xmlbuilder';
-import { Verb } from './Verb';
+import { XMLElement } from 'xmlbuilder'
+import { Verb } from './Verb'
 
 export interface SendDtmfOptions {
     dtmf: string

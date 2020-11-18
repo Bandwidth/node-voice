@@ -1,5 +1,5 @@
-import { XMLElement } from 'xmlbuilder';
-import { Verb } from './Verb';
+import { XMLElement } from 'xmlbuilder'
+import { Verb } from './Verb'
 
 export interface ForwardOptions {
     to: string
@@ -36,25 +36,25 @@ export class Forward implements ForwardOptions, Verb {
         const attributes: {[key: string]: string} = {}
 
         if (this.to !== undefined) {
-            attributes['to'] = this.to;
+            attributes['to'] = this.to
         }
 
         if (this.from !== undefined) {
-            attributes['from'] = this.from;
+            attributes['from'] = this.from
         }
 
         if (this.callTimeout !== undefined) {
-            attributes['callTimeout'] = this.callTimeout;
+            attributes['callTimeout'] = this.callTimeout
         }
 
         if (this.diversionTreatment !== undefined) {
-            attributes['diversionTreatment'] = this.diversionTreatment;
+            attributes['diversionTreatment'] = this.diversionTreatment
         }
 
         if (this.diversionReason !== undefined) {
-            attributes['diversionReason'] = this.diversionReason;
+            attributes['diversionReason'] = this.diversionReason
         }
 
-        xml.ele('Forward', attributes);
+        xml.ele('Forward', attributes)
     }
 }
