@@ -10,8 +10,8 @@ export class Response {
             this.verbs = verbs
     }
 
-    add(verb: Verb){
-        this.verbs.push(verb)
+    add(...verbs: Verb[]){
+        this.verbs.push(...verbs)
     }
 
     toBxml() {
