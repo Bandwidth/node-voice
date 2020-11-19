@@ -1,0 +1,24 @@
+name: Deploy to NPM
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  deploy:
+    name: Push the Node SDK to npm
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.release.prerelease && github.event.release.target_commitish == 'main' }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - name: Node Publish
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
