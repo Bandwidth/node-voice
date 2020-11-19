@@ -18,6 +18,11 @@ jobs:
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
+    - name: Build and Test SDK
+      run: |
+           npm install
+           npm run build
+           npm run test --if-present
     - name: Node Publish
       run: npm publish --access public
       env:
