@@ -27,7 +27,7 @@
   },
   "name": "@bandwidth/voice",
   "description": "Bandwidth's HTTP voice platform",
-  "author": "APIMATIC SDK Generator",
+  "author": "Bandwidth",
   "devDependencies": {
     "@types/detect-node": "^2.0.0",
     "@types/lodash.flatmap": "^4.5.6",
@@ -47,6 +47,6 @@
     "xmlbuilder": "^15.1.1"
   },
   "bugs": {
-    "email": "support@apimatic.io"
+    "email": "dx@bandwidth.com"
   }
 }
