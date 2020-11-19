@@ -1,14 +1,15 @@
 name: Deploy to NPM
 
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types:
+      - published
 
 jobs:
   deploy:
-    name: Push the Node SDK npm
+    name: Push the Node SDK to npm
     runs-on: ubuntu-latest
+    if: ${{ !github.event.release.prerelease && github.event.release.target_commitish == 'main' }}
     steps:
     - name: Checkout
       uses: actions/checkout@v1
