@@ -20,7 +20,9 @@ export interface TransferOptions  {
 
     diversionReason?: string
 
-    phoneNumbers: Transfer.PhoneNumber[]
+    phoneNumbers?: Transfer.PhoneNumber[]
+
+    sipUris?: Transfer.SipUri[]
 
     transferCompleteFallbackUrl?: string
 
@@ -50,7 +52,9 @@ export class Transfer implements TransferOptions, Verb {
 
     diversionReason?: string
 
-    phoneNumbers: Transfer.PhoneNumber[]
+    phoneNumbers?: Transfer.PhoneNumber[]
+
+    sipUris?: Transfer.SipUri[]
 
     transferCompleteFallbackUrl?: string
 
@@ -62,6 +66,8 @@ export class Transfer implements TransferOptions, Verb {
 
     constructor(options: TransferOptions) {
         this.phoneNumbers = options.phoneNumbers
+        this.sipUris = options.sipUris
+
         this.callTimeout = options.callTimeout
         this.diversionReason = options.diversionReason
         this.diversionTreatment = options.diversionTreatment
@@ -136,12 +142,149 @@ export class Transfer implements TransferOptions, Verb {
         //to be added easily
         var ele = xml.ele('Transfer', attributes)
 
-        for (const phoneNumber of this.phoneNumbers) {
-            phoneNumber.addXml(ele)
+        if (this.phoneNumbers && this.phoneNumbers.length > 0) {
+            for (const phoneNumber of this.phoneNumbers) {
+                phoneNumber.addXml(ele)
+            }
+        }
+
+        if (this.sipUris && this.sipUris.length > 0) {
+            for (const sipUri of this.sipUris) {
+                sipUri.addXml(ele)
+            }
         }
     }
+}
 
+export module Transfer {
     
+    export interface SipUriOptions {
+        sipUri: string
+
+        uui?: string
+
+        transferAnswerUrl?: string
+
+        transferAnswerMethod?: string
+
+        transferAnswerFallbackUrl?: string
+
+        transferAnswerFallbackMethod?: string
+
+        transferDisconnectUrl?: string
+
+        transferDisconnectMethod?: string
+
+        username?: string
+
+        password?: string
+
+        fallbackUsername?: string
+
+        fallbackPassword?: string
+
+        tag?: string
+
+    }
+
+    export class SipUri implements SipUriOptions, Verb {
+        sipUri: string
+
+        uui?: string
+
+        transferAnswerUrl?: string
+
+        transferAnswerMethod?: string
+
+        transferAnswerFallbackUrl?: string
+
+        transferAnswerFallbackMethod?: string
+
+        transferDisconnectUrl?: string
+
+        transferDisconnectMethod?: string
+
+        username?: string
+
+        password?: string
+
+        fallbackUsername?: string
+
+        fallbackPassword?: string
+
+        tag?: string
+
+        constructor(options: SipUriOptions) {
+            this.sipUri = options.sipUri
+            this.uui = options.uui
+            this.transferAnswerUrl = options.transferAnswerUrl
+            this.transferAnswerMethod = options.transferAnswerMethod
+            this.transferAnswerFallbackUrl = options.transferAnswerFallbackUrl
+            this.transferAnswerFallbackMethod = options.transferAnswerFallbackMethod
+            this.transferDisconnectUrl = options.transferDisconnectUrl
+            this.transferDisconnectMethod = options.transferDisconnectMethod
+            this.username = options.username
+            this.password = options.password
+            this.fallbackUsername = options.fallbackUsername
+            this.fallbackPassword = options.fallbackPassword
+            this.tag = options.tag
+        }
+
+        addXml(xml: XMLElement) {
+            const attributes: {[key: string]: string} = {}
+
+            if (this.uui !== undefined) {
+                attributes['uui'] = this.uui
+            }
+
+            if (this.transferAnswerUrl !== undefined) {
+                attributes['transferAnswerUrl'] = this.transferAnswerUrl
+            }
+
+            if (this.transferAnswerMethod !== undefined) {
+                attributes['transferAnswerMethod'] = this.transferAnswerMethod
+            }
+
+            if (this.transferAnswerFallbackUrl !== undefined) {
+                attributes['transferAnswerFallbackUrl'] = this.transferAnswerFallbackUrl
+            }
+
+            if (this.transferAnswerFallbackMethod !== undefined) {
+                attributes['transferAnswerFallbackMethod'] = this.transferAnswerFallbackMethod
+            }
+
+            if (this.transferDisconnectUrl !== undefined) {
+                attributes['transferDisconnectUrl'] = this.transferDisconnectUrl
+            }
+
+            if (this.transferDisconnectMethod !== undefined) {
+                attributes['transferDisconnectMethod'] = this.transferDisconnectMethod
+            }
+
+            if (this.username !== undefined) {
+                attributes['username'] = this.username
+            }
+
+            if (this.password !== undefined) {
+                attributes['password'] = this.password
+            }
+
+            if (this.fallbackUsername !== undefined) {
+                attributes['fallbackUsername'] = this.fallbackUsername
+            }
+
+            if (this.fallbackPassword !== undefined) {
+                attributes['fallbackPassword'] = this.fallbackPassword
+            }
+
+            if (this.tag !== undefined) {
+                attributes['tag'] = this.tag
+            }
+
+            xml.ele('SipUri', attributes, this.sipUri)
+            
+        }
+    }
 }
 
 export module Transfer {
@@ -266,3 +409,4 @@ export module Transfer {
     }
 
 }
+
