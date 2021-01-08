@@ -20,9 +20,9 @@ export { ApiCallResponse } from './models/apiCallResponse';
 export { ApiCallStateResponse } from './models/apiCallStateResponse';
 export { ApiCreateCallRequest } from './models/apiCreateCallRequest';
 export { ApiModifyCallRequest } from './models/apiModifyCallRequest';
+export { ApiModifyConferenceRequest } from './models/apiModifyConferenceRequest';
 export { ApiTranscribeRecordingRequest } from './models/apiTranscribeRecordingRequest';
 export { CallbackMethodEnum } from './models/callbackMethodEnum';
-export { CallEngineModifyConferenceRequest } from './models/callEngineModifyConferenceRequest';
 export { ConferenceDetail } from './models/conferenceDetail';
 export { ConferenceEventMethodEnum } from './models/conferenceEventMethodEnum';
 export { ConferenceMemberDetail } from './models/conferenceMemberDetail';
@@ -44,4 +44,3 @@ export { StatusEnum } from './models/statusEnum';
 export { Transcript } from './models/transcript';
 export { Transcription } from './models/transcription';
 export { TranscriptionResponse } from './models/transcriptionResponse';
-export * from './bxml'

@@ -25,13 +25,13 @@ import {
   apiModifyCallRequestSchema,
 } from '../models/apiModifyCallRequest';
 import {
+  ApiModifyConferenceRequest,
+  apiModifyConferenceRequestSchema,
+} from '../models/apiModifyConferenceRequest';
+import {
   ApiTranscribeRecordingRequest,
   apiTranscribeRecordingRequestSchema,
 } from '../models/apiTranscribeRecordingRequest';
-import {
-  CallEngineModifyConferenceRequest,
-  callEngineModifyConferenceRequestSchema,
-} from '../models/callEngineModifyConferenceRequest';
 import {
   ConferenceDetail,
   conferenceDetailSchema,
@@ -519,14 +519,14 @@ export class ApiController extends BaseController {
   async modifyConference(
     accountId: string,
     conferenceId: string,
-    body?: CallEngineModifyConferenceRequest,
+    body?: ApiModifyConferenceRequest,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<void>> {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({
       accountId: [accountId, string()],
       conferenceId: [conferenceId, string()],
-      body: [body, optional(callEngineModifyConferenceRequestSchema)],
+      body: [body, optional(apiModifyConferenceRequestSchema)],
     });
     req.json(mapped.body);
     req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}`;
