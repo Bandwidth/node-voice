@@ -18,8 +18,10 @@ import {
 export interface ApiCreateCallRequest {
   /** Format is E164 */
   from: string;
-  /** Format is E164 */
+  /** Format is E164 or SIP URI */
   to: string;
+  /** When calling a SIP URI, this will be sent as the 'User-To-User' header within the initial INVITE. An 'encoding' parameter must be specified as described in https://tools.ietf.org/html/rfc7433. This header cannot exceed 256 characters, including the encoding parameter. */
+  uui?: string;
   callTimeout?: number;
   callbackTimeout?: number;
   answerUrl: string;
@@ -41,6 +43,7 @@ export interface ApiCreateCallRequest {
 export const apiCreateCallRequestSchema: Schema<ApiCreateCallRequest> = object({
   from: ['from', string()],
   to: ['to', string()],
+  uui: ['uui', optional(string())],
   callTimeout: ['callTimeout', optional(number())],
   callbackTimeout: ['callbackTimeout', optional(number())],
   answerUrl: ['answerUrl', string()],

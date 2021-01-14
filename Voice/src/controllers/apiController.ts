@@ -9,9 +9,9 @@ import { ApiError } from '../errors/apiError';
 import { ApiErrorResponseError } from '../errors/apiErrorResponseError';
 import { RequestOptions } from '../http/requestBuilder';
 import {
-  ApiCallResponse,
-  apiCallResponseSchema,
-} from '../models/apiCallResponse';
+  ApiCallResponseNameChangeTest,
+  apiCallResponseNameChangeTestSchema,
+} from '../models/apiCallResponseNameChangeTest';
 import {
   ApiCallStateResponse,
   apiCallStateResponseSchema,
@@ -25,13 +25,13 @@ import {
   apiModifyCallRequestSchema,
 } from '../models/apiModifyCallRequest';
 import {
+  ApiModifyConferenceRequest,
+  apiModifyConferenceRequestSchema,
+} from '../models/apiModifyConferenceRequest';
+import {
   ApiTranscribeRecordingRequest,
   apiTranscribeRecordingRequestSchema,
 } from '../models/apiTranscribeRecordingRequest';
-import {
-  CallEngineModifyConferenceRequest,
-  callEngineModifyConferenceRequestSchema,
-} from '../models/callEngineModifyConferenceRequest';
 import {
   ConferenceDetail,
   conferenceDetailSchema,
@@ -71,7 +71,7 @@ export class ApiController extends BaseController {
     accountId: string,
     body?: ApiCreateCallRequest,
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ApiCallResponse>> {
+  ): Promise<ApiResponse<ApiCallResponseNameChangeTest>> {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({
       accountId: [accountId, string()],
@@ -86,7 +86,7 @@ export class ApiController extends BaseController {
     req.throwOn(415, ApiErrorResponseError, 'We don\'t support that media type. If a request body is required, please send it to us as `application/json`.');
     req.throwOn(429, ApiErrorResponseError, 'You\'re sending requests to this endpoint too frequently. Please slow your request rate down and try again.');
     req.throwOn(500, ApiErrorResponseError, 'Something unexpected happened. Please try again.');
-    return req.callAsJson(apiCallResponseSchema, requestOptions);
+    return req.callAsJson(apiCallResponseNameChangeTestSchema, requestOptions);
   }
 
   /**
@@ -519,14 +519,14 @@ export class ApiController extends BaseController {
   async modifyConference(
     accountId: string,
     conferenceId: string,
-    body?: CallEngineModifyConferenceRequest,
+    body?: ApiModifyConferenceRequest,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<void>> {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({
       accountId: [accountId, string()],
       conferenceId: [conferenceId, string()],
-      body: [body, optional(callEngineModifyConferenceRequestSchema)],
+      body: [body, optional(apiModifyConferenceRequestSchema)],
     });
     req.json(mapped.body);
     req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}`;
