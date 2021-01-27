@@ -15,9 +15,9 @@ import {
 } from './redirectMethodEnum';
 import { StatusEnum, statusEnumSchema } from './statusEnum';
 
-export interface CallEngineModifyConferenceRequest {
+export interface ApiModifyConferenceRequest {
   status?: StatusEnum;
-  redirectUrl: string;
+  redirectUrl?: string;
   redirectFallbackUrl?: string;
   redirectMethod?: RedirectMethodEnum;
   redirectFallbackMethod?: RedirectFallbackMethodEnum;
@@ -27,10 +27,10 @@ export interface CallEngineModifyConferenceRequest {
   fallbackPassword?: string;
 }
 
-export const callEngineModifyConferenceRequestSchema: Schema<CallEngineModifyConferenceRequest> = object(
+export const apiModifyConferenceRequestSchema: Schema<ApiModifyConferenceRequest> = object(
   {
     status: ['status', optional(statusEnumSchema)],
-    redirectUrl: ['redirectUrl', string()],
+    redirectUrl: ['redirectUrl', optional(string())],
     redirectFallbackUrl: ['redirectFallbackUrl', optional(string())],
     redirectMethod: ['redirectMethod', optional(redirectMethodEnumSchema)],
     redirectFallbackMethod: [
