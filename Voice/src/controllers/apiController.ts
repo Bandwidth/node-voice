@@ -25,13 +25,13 @@ import {
   apiModifyCallRequestSchema,
 } from '../models/apiModifyCallRequest';
 import {
+  ApiModifyConferenceRequest,
+  apiModifyConferenceRequestSchema,
+} from '../models/apiModifyConferenceRequest';
+import {
   ApiTranscribeRecordingRequest,
   apiTranscribeRecordingRequestSchema,
 } from '../models/apiTranscribeRecordingRequest';
-import {
-  CallEngineModifyConferenceRequest,
-  callEngineModifyConferenceRequestSchema,
-} from '../models/callEngineModifyConferenceRequest';
 import {
   ConferenceDetail,
   conferenceDetailSchema,
@@ -189,7 +189,7 @@ export class ApiController extends BaseController {
    * @param callId
    * @return Response from the API call
    */
-  async getQueryMetadataForAccountAndCall(
+  async queryMetadataForAccountAndCall(
     accountId: string,
     callId: string,
     requestOptions?: RequestOptions
@@ -283,7 +283,7 @@ export class ApiController extends BaseController {
    * @param recordingId
    * @return Response from the API call
    */
-  async getStreamRecordingMedia(
+  async streamRecordingMedia(
     accountId: string,
     callId: string,
     recordingId: string,
@@ -377,7 +377,7 @@ export class ApiController extends BaseController {
    * @param body
    * @return Response from the API call
    */
-  async createTranscribeRecording(
+  async transcribeRecording(
     accountId: string,
     callId: string,
     recordingId: string,
@@ -519,14 +519,14 @@ export class ApiController extends BaseController {
   async modifyConference(
     accountId: string,
     conferenceId: string,
-    body?: CallEngineModifyConferenceRequest,
+    body?: ApiModifyConferenceRequest,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<void>> {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({
       accountId: [accountId, string()],
       conferenceId: [conferenceId, string()],
-      body: [body, optional(callEngineModifyConferenceRequestSchema)],
+      body: [body, optional(apiModifyConferenceRequestSchema)],
     });
     req.json(mapped.body);
     req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}`;
@@ -614,7 +614,7 @@ export class ApiController extends BaseController {
    * @param conferenceId
    * @return Response from the API call
    */
-  async getQueryMetadataForAccountAndConference(
+  async queryMetadataForAccountAndConference(
     accountId: string,
     conferenceId: string,
     requestOptions?: RequestOptions
@@ -677,7 +677,7 @@ export class ApiController extends BaseController {
    * @param recordingId
    * @return Response from the API call
    */
-  async getStreamConferenceRecordingMedia(
+  async streamConferenceRecordingMedia(
     accountId: string,
     conferenceId: string,
     recordingId: string,
@@ -712,7 +712,7 @@ export class ApiController extends BaseController {
    * @param maxStartTime
    * @return Response from the API call
    */
-  async getQueryMetadataForAccount(
+  async queryMetadataForAccount(
     accountId: string,
     from?: string,
     to?: string,
