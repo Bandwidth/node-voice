@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0-beta",
+  "version": "1.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "tsdx build",
-    "testdx": "tsdx test",
+    "test": "tsdx test",
     "lint": "tsdx lint src",
     "prepare": "tsdx build"
   },
@@ -25,28 +25,27 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@bandwidth/voice",
+  "name": "bandwidthlib-voice",
   "description": "Bandwidth's HTTP voice platform",
-  "author": "Bandwidth",
+  "author": "APIMATIC SDK Generator",
   "devDependencies": {
     "@types/detect-node": "^2.0.0",
     "@types/lodash.flatmap": "^4.5.6",
     "abort-controller": "^3.0.0",
     "stream-equal": "^2.0.1",
     "tsdx": "^0.14.1",
-    "tslib": "^2.0.3",
+    "tslib": "^2.1.0",
     "typescript": "^3.9.7"
   },
   "dependencies": {
     "@apimatic/schema": "^0.4.1",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "detect-node": "^2.0.4",
     "form-data": "^3.0.0",
     "lodash.flatmap": "^4.5.0",
-    "tiny-warning": "^1.0.3",
-    "xmlbuilder": "^15.1.1"
+    "tiny-warning": "^1.0.3"
   },
   "bugs": {
-    "email": "dx@bandwidth.com"
+    "email": "support@apimatic.io"
   }
 }

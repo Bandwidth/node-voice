@@ -10,9 +10,9 @@ import { Schema, stringEnum } from '../schema';
  * Enum for StateEnum
  */
 export enum StateEnum {
-  Disconnected = 'disconnected',
-  Answered = 'answered',
-  Initiated = 'initiated',
+  DISCONNECTED = 'DISCONNECTED',
+  ANSWERED = 'ANSWERED',
+  INITIATED = 'INITIATED',
 }
 
 /**
