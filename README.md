@@ -1,5 +1,7 @@
 # Getting Started with Voice
 
+Note: As of version 2.0.0, this package has been upgraded to Typescript
+
 ## Getting Started
 
 ### Introduction
