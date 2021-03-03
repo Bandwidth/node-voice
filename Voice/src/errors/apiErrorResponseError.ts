@@ -7,12 +7,12 @@
 import { ApiError } from './apiError';
 
 /**
- * Creates an instance of ApiErrorResponse
+ * Creates an instance of ApiErrorResponseError
  */
-interface ApiErrorResponse {
+interface ApiErrorResponseError {
   type?: string;
   description?: string;
   id?: string;
 }
 
-export class ApiErrorResponseError extends ApiError<ApiErrorResponse> {}
+export class ApiErrorResponseErrorError extends ApiError<ApiErrorResponseError> {}
