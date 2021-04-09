@@ -15,6 +15,7 @@
   "scripts": {
     "build": "tsdx build",
     "testdx": "tsdx test",
+    "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint src",
     "prepare": "tsdx build"
   },
