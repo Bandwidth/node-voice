@@ -1,6 +1,7 @@
 import xmlbuilder from 'xmlbuilder'
 import { Verb } from './Verb'
 
+
 export class Response {
 
     verbs: Verb[] = []
@@ -24,6 +25,7 @@ export class Response {
             verb.addXml(xml)
         }
 
-        return xml.end()
+        const re = /&lt;([a-zA-Z\/\/].*?)&gt;/g
+        return xml.end().replace(re, '<$1>')
     }
 }

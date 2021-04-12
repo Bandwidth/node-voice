@@ -7,14 +7,25 @@ on:
       - 'main'
 
 jobs:
-  build-and-test-sdk:
-    name: Validate/Test SDK
+  validate-sdk:
+    name: Validate and Test 
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Build and Test SDK
-      run: |
-           npm install
-           npm run build
-           npm run test --if-present
+    - name: Setup Node
+      uses: actions/setup-node@v1
+    - name: Install npm package
+      run: npm install
+    - name: Build npm package
+      run: npm run build --if-present
+    - name: Test npm package
+      env:
+        BANDWIDTH_ACCOUNT_ID: ${{ secrets.BANDWIDTH_ACCOUNT_ID }}
+        BANDWIDTH_USERNAME: ${{ secrets.BANDWIDTH_USERNAME }}
+        BANDWIDTH_PASSWORD: ${{ secrets.BANDWIDTH_PASSWORD }}
+        VOICE_APPLICATION_ID: ${{ secrets.VOICE_APPLICATION_ID }}
+        PHONE_NUMBER_INBOUND: ${{ secrets.PHONE_NUMBER_INBOUND }}
+        PHONE_NUMBER_OUTBOUND: ${{ secrets.PHONE_NUMBER_OUTBOUND }}
+        VOICE_CALLBACK_URL: ${{ secrets.VOICE_CALLBACK_URL }}
+      run: npm run test --if-present
