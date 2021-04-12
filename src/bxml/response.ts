@@ -26,6 +26,6 @@ export class Response {
         }
 
         const re = /&lt;([a-zA-Z\/\/].*?)&gt;/g
-        return xml.end().replaceAll(re, '<$1>')
+        return xml.end().replace(re, '<$1>')
     }
 }
