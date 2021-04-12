@@ -323,13 +323,18 @@ describe("Transfer", function() {
                 fallbackPassword: "fpass",
             });
 
-            var number2 = new Transfer.PhoneNumber({
-                number: "+17777777779",
-                transferAnswerUrl: "https://test2.com",
+            var sipUri = new Transfer.SipUri({
+                sipUri: "sip-uri",
+                uui: "uui",
+                transferAnswerUrl: "https://test3.com",
                 transferAnswerMethod: "POST",
                 username: "user2",
                 password: "pass2",
                 tag: "tag2",
+                transferAnswerFallbackUrl: "https://test4.com",
+                transferAnswerFallbackMethod: "POST",
+                fallbackUsername: "fuser2",
+                fallbackPassword: "fpass4",
             });
 
             var transfer = new Transfer({
@@ -346,12 +351,13 @@ describe("Transfer", function() {
                 transferCompleteFallbackMethod: "POST",
                 fallbackUsername: "fusern",
                 fallbackPassword: "fpassw",
-                phoneNumbers: [number1, number2]
+                phoneNumbers: [number1],
+                sipUris: [sipUri]
             });
 
             var response = new Response(transfer);
 
-            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Transfer transferCallerId=\"+18888888888\" callTimeout=\"3\" tag=\"tagTransfer\" transferCompleteUrl=\"https://testtransfer.com\" transferCompleteMethod=\"GET\" username=\"usertransfer\" password=\"passtransfer\" diversionTreatment=\"none\" diversionReason=\"away\" transferCompleteFallbackUrl=\"https://test.com\" transferCompleteFallbackMethod=\"POST\" fallbackUsername=\"fusern\" fallbackPassword=\"fpassw\"><PhoneNumber transferAnswerUrl=\"https://test.com\" transferAnswerMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" transferAnswerFallbackUrl=\"https://test2.com\" transferAnswerFallbackMethod=\"GET\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\">+17777777777</PhoneNumber><PhoneNumber transferAnswerUrl=\"https://test2.com\" transferAnswerMethod=\"POST\" username=\"user2\" password=\"pass2\" tag=\"tag2\">+17777777779</PhoneNumber></Transfer></Response>";
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Transfer transferCallerId=\"+18888888888\" callTimeout=\"3\" tag=\"tagTransfer\" transferCompleteUrl=\"https://testtransfer.com\" transferCompleteMethod=\"GET\" username=\"usertransfer\" password=\"passtransfer\" diversionTreatment=\"none\" diversionReason=\"away\" transferCompleteFallbackUrl=\"https://test.com\" transferCompleteFallbackMethod=\"POST\" fallbackUsername=\"fusern\" fallbackPassword=\"fpassw\"><PhoneNumber transferAnswerUrl=\"https://test.com\" transferAnswerMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" transferAnswerFallbackUrl=\"https://test2.com\" transferAnswerFallbackMethod=\"GET\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\">+17777777777</PhoneNumber><SipUri uui=\"uui\" transferAnswerUrl=\"https://test3.com\" transferAnswerMethod=\"POST\" transferAnswerFallbackUrl=\"https://test4.com\" transferAnswerFallbackMethod=\"POST\" username=\"user2\" password=\"pass2\" fallbackUsername=\"fuser2\" fallbackPassword=\"fpass4\" tag=\"tag2\">sip-uri</SipUri></Transfer></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });
