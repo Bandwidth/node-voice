@@ -1,6 +1,8 @@
 name: Validate/Test SDK
 
 on:
+  schedule:
+    - cron: "0 4 * * *"
   pull_request:
     branches:
       - 'master'
