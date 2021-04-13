@@ -23,6 +23,14 @@ jobs:
            npm install
            npm run build
            npm run test --if-present
+      env:
+        BANDWIDTH_ACCOUNT_ID: ${{ secrets.BANDWIDTH_ACCOUNT_ID }}
+        BANDWIDTH_USERNAME: ${{ secrets.BANDWIDTH_USERNAME }}
+        BANDWIDTH_PASSWORD: ${{ secrets.BANDWIDTH_PASSWORD }}
+        VOICE_APPLICATION_ID: ${{ secrets.VOICE_APPLICATION_ID }}
+        PHONE_NUMBER_INBOUND: ${{ secrets.PHONE_NUMBER_INBOUND }}
+        PHONE_NUMBER_OUTBOUND: ${{ secrets.PHONE_NUMBER_OUTBOUND }}
+        VOICE_CALLBACK_URL: ${{ secrets.VOICE_CALLBACK_URL }}
     - name: Publish npm package
       run: |
             npm version $RELEASE_VERSION --no-git-tag-version
