@@ -14,7 +14,7 @@ import {
 } from './clientInterface';
 import { Configuration, Environment } from './configuration';
 import { DEFAULT_CONFIGURATION } from './defaultConfiguration';
-import { ApiError } from './errors/apiError';
+import { ApiError } from './core';
 import { HttpClient } from './http/httpClient';
 import { pathTemplate } from './http/pathTemplate';
 import {
