@@ -33,7 +33,7 @@ describe('api', () => {
         
         //get call state
         const callId = createCallResponse.result.callId;
-        const getCallStateResponse = await controller.getCallState(accountId, callId);
+        const getCallStateResponse = await controller.getCall(accountId, callId);
         expect(getCallStateResponse.result.applicationId).toEqual(applicationId);
         expect(getCallStateResponse.result.to).toEqual(to);
         expect(getCallStateResponse.result.from).toEqual(from);
