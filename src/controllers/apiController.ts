@@ -6,7 +6,7 @@
 
 import { ApiError } from '@apimatic/core';
 import { BaseController } from './baseController';
-import { ApiResponse, RequestOptions, SkipEncode } from '../core';
+import { ApiResponse, RequestOptions} from '../core';
 import { ExternalApiError } from '../errors/externalApiError';
 import {
   CallRecordingMetadata,
@@ -75,7 +75,7 @@ export class ApiController extends BaseController {
       body: [body, createCallRequestSchema],
     });
     req.json(mapped.body);
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -104,7 +104,7 @@ export class ApiController extends BaseController {
       accountId: [accountId, string()],
       callId: [callId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -137,7 +137,7 @@ export class ApiController extends BaseController {
       body: [body, modifyCallRequestSchema],
     });
     req.json(mapped.body);
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -170,7 +170,7 @@ export class ApiController extends BaseController {
       body: [body, modifyCallRecordingRequestSchema],
     });
     req.json(mapped.body);
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recording`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recording`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -200,7 +200,7 @@ export class ApiController extends BaseController {
       accountId: [accountId, string()],
       callId: [callId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recordings`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recordings`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -232,7 +232,7 @@ export class ApiController extends BaseController {
       callId: [callId, string()],
       recordingId: [recordingId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recordings/${new SkipEncode(mapped.recordingId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recordings/${mapped.recordingId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -264,7 +264,7 @@ export class ApiController extends BaseController {
       callId: [callId, string()],
       recordingId: [recordingId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recordings/${new SkipEncode(mapped.recordingId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recordings/${mapped.recordingId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -296,7 +296,7 @@ export class ApiController extends BaseController {
       callId: [callId, string()],
       recordingId: [recordingId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recordings/${new SkipEncode(mapped.recordingId)}/media`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recordings/${mapped.recordingId}/media`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -328,7 +328,7 @@ export class ApiController extends BaseController {
       callId: [callId, string()],
       recordingId: [recordingId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recordings/${new SkipEncode(mapped.recordingId)}/media`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recordings/${mapped.recordingId}/media`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -360,7 +360,7 @@ export class ApiController extends BaseController {
       callId: [callId, string()],
       recordingId: [recordingId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recordings/${new SkipEncode(mapped.recordingId)}/transcription`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recordings/${mapped.recordingId}/transcription`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -396,7 +396,7 @@ export class ApiController extends BaseController {
       body: [body, transcribeRecordingRequestSchema],
     });
     req.json(mapped.body);
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recordings/${new SkipEncode(mapped.recordingId)}/transcription`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recordings/${mapped.recordingId}/transcription`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -429,7 +429,7 @@ export class ApiController extends BaseController {
       callId: [callId, string()],
       recordingId: [recordingId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/calls/${new SkipEncode(mapped.callId)}/recordings/${new SkipEncode(mapped.recordingId)}/transcription`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/recordings/${mapped.recordingId}/transcription`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -475,7 +475,7 @@ export class ApiController extends BaseController {
     req.query('maxCreatedTime', mapped.maxCreatedTime);
     req.query('pageSize', mapped.pageSize);
     req.query('pageToken', mapped.pageToken);
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/conferences`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -504,7 +504,7 @@ export class ApiController extends BaseController {
       accountId: [accountId, string()],
       conferenceId: [conferenceId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/conferences/${new SkipEncode(mapped.conferenceId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -537,7 +537,7 @@ export class ApiController extends BaseController {
       body: [body, modifyConferenceRequestSchema],
     });
     req.json(mapped.body);
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/conferences/${new SkipEncode(mapped.conferenceId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -573,7 +573,7 @@ export class ApiController extends BaseController {
       body: [body, conferenceMemberStateSchema],
     });
     req.json(mapped.body);
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/conferences/${new SkipEncode(mapped.conferenceId)}/members/${new SkipEncode(mapped.callId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}/members/${mapped.callId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -605,7 +605,7 @@ export class ApiController extends BaseController {
       conferenceId: [conferenceId, string()],
       memberId: [memberId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/conferences/${new SkipEncode(mapped.conferenceId)}/members/${new SkipEncode(mapped.memberId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}/members/${mapped.memberId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -635,7 +635,7 @@ export class ApiController extends BaseController {
       accountId: [accountId, string()],
       conferenceId: [conferenceId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/conferences/${new SkipEncode(mapped.conferenceId)}/recordings`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}/recordings`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -670,7 +670,7 @@ export class ApiController extends BaseController {
       conferenceId: [conferenceId, string()],
       recordingId: [recordingId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/conferences/${new SkipEncode(mapped.conferenceId)}/recordings/${new SkipEncode(mapped.recordingId)}`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}/recordings/${mapped.recordingId}`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -702,7 +702,7 @@ export class ApiController extends BaseController {
       conferenceId: [conferenceId, string()],
       recordingId: [recordingId, string()],
     });
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/conferences/${new SkipEncode(mapped.conferenceId)}/recordings/${new SkipEncode(mapped.recordingId)}/media`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/conferences/${mapped.conferenceId}/recordings/${mapped.recordingId}/media`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
@@ -746,7 +746,7 @@ export class ApiController extends BaseController {
     req.query('to', mapped.to);
     req.query('minStartTime', mapped.minStartTime);
     req.query('maxStartTime', mapped.maxStartTime);
-    req.appendTemplatePath`/api/v2/accounts/${new SkipEncode(mapped.accountId)}/recordings`;
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/recordings`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');

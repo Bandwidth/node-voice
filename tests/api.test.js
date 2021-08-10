@@ -32,12 +32,12 @@ describe('api', () => {
         expect(createCallResponse.result.from).toEqual(from);
         
         //get call state
-        /*const callId = createCallResponse.result.callId;
+        const callId = createCallResponse.result.callId;
         const getCallStateResponse = await controller.getCall(accountId, callId);
         expect(getCallStateResponse.result.applicationId).toEqual(applicationId);
         expect(getCallStateResponse.result.to).toEqual(to);
         expect(getCallStateResponse.result.from).toEqual(from);
-        expect(getCallStateResponse.result.callId).toEqual(callId);*/
+        expect(getCallStateResponse.result.callId).toEqual(callId);
     });
 
     it('should throw an error on an invalid phone number', async () => {
