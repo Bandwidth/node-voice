@@ -13,7 +13,7 @@ npm install @bandwidth/voice
 ### Initialize
 
 ```
-import { ApiCreateCallRequest, ApiError, ApiController, Client, Response, SpeakSentence } from '@bandwidth/voice';
+import { CreateCallRequest, ApiError, ApiController, Client, Response, SpeakSentence } from '@bandwidth/voice';
 const client = new Client({
     basicAuthUserName: "username",
     basicAuthPassword: "password"
