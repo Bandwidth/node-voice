@@ -1,4 +1,4 @@
-name: Validate/Test SDK
+name: Validate
 
 on:
   schedule:
@@ -6,8 +6,8 @@ on:
   pull_request:
 
 jobs:
-  validate-sdk:
-    name: Validate and Test 
+  build:
+    name: Build and test 
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -28,3 +28,9 @@ jobs:
         PHONE_NUMBER_OUTBOUND: ${{ secrets.PHONE_NUMBER_OUTBOUND }}
         VOICE_CALLBACK_URL: ${{ secrets.VOICE_CALLBACK_URL }}
       run: npm run test --if-present
+    - uses: Bandwidth/build-notify-slack-action@v1.0.0
+      if: always()
+      with:
+        job-status: ${{ job.status }}
+        slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+        slack-channel: ${{ secrets.SLACK_CHANNEL }}
