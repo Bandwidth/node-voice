@@ -24,7 +24,7 @@ export interface CallState {
   /** The current state of the call. Current possible values are 'initiated', 'answered' and 'disconnected'. Additional states may be added in the future, so your application must be tolerant of unknown values. */
   state?: string;
   identity?: string | null;
-  pai?: Record<string, string>;
+  stirShaken?: Record<string, string>;
   startTime?: string;
   answerTime?: string | null;
   endTime?: string | null;
@@ -45,7 +45,7 @@ export const callStateSchema: Schema<CallState> = object({
   direction: ['direction', optional(string())],
   state: ['state', optional(string())],
   identity: ['identity', optional(nullable(string()))],
-  pai: ['pai', optional(dictWithXmlEntries(string()))],
+  stirShaken: ['stirShaken', optional(dictWithXmlEntries(string()))],
   startTime: ['startTime', optional(string())],
   answerTime: ['answerTime', optional(nullable(string()))],
   endTime: ['endTime', optional(nullable(string()))],
