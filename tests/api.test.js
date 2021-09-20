@@ -67,6 +67,9 @@ describe('api', () => {
           machineDetection: machineDetection
         };
 
+        console.log(body);
+        console.log(machineDetection);
+
         const createCallResponse = await controller.createCall(accountId, body);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
