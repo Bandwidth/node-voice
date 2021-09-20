@@ -75,6 +75,8 @@ describe('api', () => {
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
 
+        console.log(createCallResponse);
+
         // get call state
         const callId = createCallResponse.result.callId;
         const getCallStateResponse = await controller.getCall(accountId, callId);
