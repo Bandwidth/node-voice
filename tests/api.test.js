@@ -71,11 +71,12 @@ describe('api', () => {
         console.log(machineDetection);
 
         const createCallResponse = await controller.createCall(accountId, body);
+        console.log(createCallResponse);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
 
-        console.log(createCallResponse);
+
 
         // get call state
         const callId = createCallResponse.result.callId;
