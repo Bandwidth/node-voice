@@ -23,9 +23,9 @@ import {
   disconnectMethodEnumSchema,
 } from './disconnectMethodEnum';
 import {
-  MachineDetectionRequest,
-  machineDetectionRequestSchema,
-} from './machineDetectionRequest';
+  MachineDetectionConfiguration,
+  machineDetectionConfigurationSchema,
+} from './machineDetectionConfiguration';
 
 export interface CreateCallRequest {
   /** Format is E164 */
@@ -48,7 +48,7 @@ export interface CreateCallRequest {
   disconnectMethod?: DisconnectMethodEnum | null;
   tag?: string | null;
   applicationId: string;
-  machineDetection?: MachineDetectionRequest;
+  machineDetection?: MachineDetectionConfiguration;
 }
 
 export const createCallRequestSchema: Schema<CreateCallRequest> = object({
@@ -77,6 +77,6 @@ export const createCallRequestSchema: Schema<CreateCallRequest> = object({
   applicationId: ['applicationId', string()],
   machineDetection: [
     'machineDetection',
-    optional(lazy(() => machineDetectionRequestSchema)),
+    optional(lazy(() => machineDetectionConfigurationSchema)),
   ],
 });

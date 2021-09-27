@@ -23,7 +23,7 @@ import {
 } from './fallbackMethodEnum';
 import { ModeEnum, modeEnumSchema } from './modeEnum';
 
-export interface MachineDetectionRequest {
+export interface MachineDetectionConfiguration {
   /** The machine detection mode. If set to 'async', the detection result will be sent in a 'machineDetectionComplete' callback. If set to 'sync', the 'answer' callback will wait for the machine detection to complete and will include its result. Default is 'async'. */
   mode?: ModeEnum;
   /** Total amount of time (in seconds) before giving up. */
@@ -47,7 +47,7 @@ export interface MachineDetectionRequest {
   fallbackPassword?: string | null;
 }
 
-export const machineDetectionRequestSchema: Schema<MachineDetectionRequest> = object(
+export const machineDetectionConfigurationSchema: Schema<MachineDetectionConfiguration> = object(
   {
     mode: ['mode', optional(modeEnumSchema)],
     detectionTimeout: ['detectionTimeout', optional(number())],
