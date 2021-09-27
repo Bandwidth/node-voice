@@ -30,7 +30,7 @@ export { DisconnectMethodEnum } from './models/disconnectMethodEnum';
 export { Diversion } from './models/diversion';
 export { FallbackMethodEnum } from './models/fallbackMethodEnum';
 export { FileFormatEnum } from './models/fileFormatEnum';
-export { MachineDetectionRequest } from './models/machineDetectionRequest';
+export { MachineDetectionConfiguration } from './models/machineDetectionConfiguration';
 export { ModeEnum } from './models/modeEnum';
 export { ModifyCallRecordingRequest } from './models/modifyCallRecordingRequest';
 export { ModifyCallRequest } from './models/modifyCallRequest';

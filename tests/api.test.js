@@ -1,4 +1,4 @@
-import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionRequest } from '../src';
+import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration } from '../src';
 
 let controller;
 
