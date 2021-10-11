@@ -16,7 +16,7 @@ describe('api', () => {
         // create call
         const accountId = process.env.BW_ACCOUNT_ID;
         const from = process.env.BW_NUMBER;
-        const to = process.env.USER_NUMBERS.split(',')[Math.floor(Math.random() * items.length)];
+        const to = process.env.USER_NUMBERS.split(',')[Math.floor(Math.random() * process.env.USER_NUMBERS.length)];
         const answerUrl = `${process.env.BASE_CALLBACK_URL}/callbacks/answer`;
         const applicationId = process.env.BW_VOICE_APPLICATION_ID;
         const body = {
@@ -48,7 +48,7 @@ describe('api', () => {
         // create call
         const accountId = process.env.BW_ACCOUNT_ID;
         const from = process.env.BW_NUMBER;
-        const to = process.env.USER_NUMBERS.split(',')[Math.floor(Math.random() * items.length)];
+        const to = process.env.USER_NUMBERS.split(',')[Math.floor(Math.random() * process.env.USER_NUMBERS.length)];
         const answerUrl = `${process.env.BASE_CALLBACK_URL}/callbacks/answer`;
         const applicationId = process.env.BW_VOICE_APPLICATION_ID;
         const machineDetection = {
