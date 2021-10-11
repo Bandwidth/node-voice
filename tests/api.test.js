@@ -40,9 +40,9 @@ describe('api', () => {
         expect(getCallStateResponse.result.to).toEqual(to);
         expect(getCallStateResponse.result.from).toEqual(from);
         expect(getCallStateResponse.result.callId).toEqual(callId);
-        expect(getCallStateResponse.result.disconnectCause).toBeNull();
-        expect(getCallStateResponse.result.errorMessage).toBeNull();
-        expect(getCallStateResponse.result.errorId).toBeNull();
+        expect(getCallStateResponse.result.disconnectCause).toBeUndefined();
+        expect(getCallStateResponse.result.errorMessage).toBeUndefined();
+        expect(getCallStateResponse.result.errorId).toBeUndefined();
     });
 
     it('should create call with AMD and get call state', async () => {
@@ -85,9 +85,9 @@ describe('api', () => {
         expect(getCallStateResponse.result.to).toEqual(to);
         expect(getCallStateResponse.result.from).toEqual(from);
         expect(getCallStateResponse.result.callId).toEqual(callId);
-        expect(getCallStateResponse.result.disconnectCause).toBeNull();
-        expect(getCallStateResponse.result.errorMessage).toBeNull();
-        expect(getCallStateResponse.result.errorId).toBeNull();
+        expect(getCallStateResponse.result.disconnectCause).toBeUndefined();
+        expect(getCallStateResponse.result.errorMessage).toBeUndefined();
+        expect(getCallStateResponse.result.errorId).toBeUndefined();
     });
 
     it('should throw an error on an invalid phone number', async () => {
