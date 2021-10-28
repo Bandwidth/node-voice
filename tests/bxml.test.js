@@ -515,12 +515,13 @@ describe("Ring", function() {
     describe("#toBxml()", function() {
         it("should generate a proper Ring tag", function() {
             var ring = new Ring({
-                duration: 3
+                duration: 3,
+                answerCall: false
             });
 
             var response = new Response(ring);
 
-            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Ring duration=\"3\"/></Response>";
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Ring duration=\"3\" answerCall=\"false\"/></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });
