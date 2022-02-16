@@ -33,6 +33,20 @@ const controller = new ApiController(client);
 const accountId = "12345";
 ```
 
+*To use a custom environment*
+```
+import { CreateCallRequest, ApiError, ApiController, Client, Response, SpeakSentence, Environment } from '@bandwidth/voice';
+const client = new Client({
+    basicAuthUserName: "username",
+    basicAuthPassword: "password",
+    environment: Environment.Custom,
+    baseUrl: 'https://custom.bandwidth.com'
+});
+
+const controller = new ApiController(client);
+const accountId = "12345";
+```
+
 ### Create A Phone Call
 
 ```

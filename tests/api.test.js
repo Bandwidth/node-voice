@@ -19,6 +19,7 @@ describe('custom client', () => {
             environment: Environment.Custom,
             baseUrl: 'https://test.custom.bandwidth.com'
         });
+        console.log(customClient);
         expect(customClient.baseUrl).toEqual('https://test.custom.bandwidth.com');
     });
 });
