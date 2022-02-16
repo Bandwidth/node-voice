@@ -35,7 +35,7 @@ const accountId = "12345";
 
 *To use a custom environment*
 ```
-import { Environment } from '@bandwidth/voice';
+import { ApiController, Client, Environment } from '@bandwidth/voice';
 const client = new Client({
     basicAuthUserName: "username",
     basicAuthPassword: "password",
