@@ -14,8 +14,8 @@ beforeEach(() => {
 describe('custom client', () => {
     it( 'should create a client with a custom base url', async () => {
         const customClient = new Client({
-            basicAuthUserName: username,
-            basicAuthPassword: password,
+            basicAuthUserName: process.env.BW_USERNAME,
+            basicAuthPassword: process.env.BW_PASSWORD,
             environment: Environment.Custom,
             baseUrl: 'https://test.custom.bandwidth.com'
         });
