@@ -11,6 +11,18 @@ beforeEach(() => {
     controller = new ApiController(client);
 });
 
+describe('custom client', () => {
+    it( 'should create a client with a custom base url', async () => {
+        const customClient = new Client({
+            basicAuthUserName: username,
+            basicAuthPassword: password,
+            environment: Environment.Custom,
+            baseUrl: 'https://test.custom.bandwidth.com'
+        });
+        expect(customClient.baseUrl).toEqual('https://test.custom.bandwidth.com');
+    });
+});
+
 describe('api', () => {
     it('should create call and get call state', async () => {
         // create call
