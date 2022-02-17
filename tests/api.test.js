@@ -1,4 +1,4 @@
-import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration } from '../src';
+import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration, Environment } from '../src';
 
 let controller;
 
@@ -9,6 +9,18 @@ beforeEach(() => {
     });
 
     controller = new ApiController(client);
+});
+
+describe('custom client', () => {
+    it( 'should create a client with a custom base url', async () => {
+        const customClient = new Client({
+            basicAuthUserName: process.env.BW_USERNAME,
+            basicAuthPassword: process.env.BW_PASSWORD,
+            environment: Environment.Custom,
+            baseUrl: 'https://test.custom.bandwidth.com'
+        });
+        expect(customClient._config.baseUrl).toEqual('https://test.custom.bandwidth.com');
+    });
 });
 
 describe('api', () => {
