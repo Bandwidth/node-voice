@@ -53,7 +53,7 @@ import {
   TranscriptionResponse,
   transcriptionResponseSchema,
 } from '../models/transcriptionResponse';
-import { array, number, optional, string, unknown } from '../schema';
+import { array, number, optional, string } from '../schema';
 
 export class ApiController extends BaseController {
   /**
