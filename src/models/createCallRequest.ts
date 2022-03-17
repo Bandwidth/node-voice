@@ -49,6 +49,7 @@ export interface CreateCallRequest {
   tag?: string | null;
   applicationId: string;
   machineDetection?: MachineDetectionConfiguration;
+  priority?: number | null;
 }
 
 export const createCallRequestSchema: Schema<CreateCallRequest> = object({
@@ -79,4 +80,5 @@ export const createCallRequestSchema: Schema<CreateCallRequest> = object({
     'machineDetection',
     optional(lazy(() => machineDetectionConfigurationSchema)),
   ],
+  priority: ['priority', optional(nullable(number()))]
 });

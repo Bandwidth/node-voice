@@ -36,6 +36,7 @@ export interface CreateCallResponse {
   fallbackUsername?: string | null;
   fallbackPassword?: string | null;
   tag?: string | null;
+  priority?: number | null;
 }
 
 export const createCallResponseSchema: Schema<CreateCallResponse> = object({
@@ -62,4 +63,5 @@ export const createCallResponseSchema: Schema<CreateCallResponse> = object({
   fallbackUsername: ['fallbackUsername', optional(nullable(string()))],
   fallbackPassword: ['fallbackPassword', optional(nullable(string()))],
   tag: ['tag', optional(nullable(string()))],
+  priority: ['priority', optional(nullable(number()))]
 });
