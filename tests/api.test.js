@@ -94,6 +94,29 @@ describe('api', () => {
         expect(getCallStateResponse.result.callId).toEqual(callId);
     });
 
+    it('should create call with priority',  async () => {
+        const accountId = process.env.BW_ACCOUNT_ID;
+        const from = process.env.BW_NUMBER;
+        const to = process.env.USER_NUMBER;
+        const answerUrl = `${process.env.BASE_CALLBACK_URL}/callbacks/answer`;
+        const applicationId = process.env.BW_VOICE_APPLICATION_ID;
+        const priority = 1;
+
+        const body = {
+            from: from,
+            to: to,
+            answerUrl: answerUrl,
+            applicationId: applicationId,
+            priority: priority
+          };
+  
+          const createCallResponse = await controller.createCall(accountId, body);
+          expect(createCallResponse.result.applicationId).toEqual(applicationId);
+          expect(createCallResponse.result.to).toEqual(to);
+          expect(createCallResponse.result.from).toEqual(from);
+          expect(createCallResponse.result.priority).toEqual(priority);
+    });
+
     it('should throw an error on an invalid phone number', async () => {
         const accountId = process.env.BW_ACCOUNT_ID;
         const from = process.env.BW_NUMBER;
