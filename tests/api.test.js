@@ -1,4 +1,3 @@
-import { createCall } from 'typescript';
 import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration, Environment } from '../src';
 
 let controller;
