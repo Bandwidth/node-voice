@@ -69,6 +69,7 @@ describe('api', () => {
             delayResult: true,
             callbackUrl: `${process.env.BASE_CALLBACK_URL}/callbacks/machineDetection`,
             callbackMethod: CallbackMethodEnum.POST,
+            machineSpeechEndThreshold: 3.2
         };
 
         const body = {

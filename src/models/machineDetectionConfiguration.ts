@@ -45,6 +45,7 @@ export interface MachineDetectionConfiguration {
   password?: string | null;
   fallbackUsername?: string | null;
   fallbackPassword?: string | null;
+  machineSpeechEndThreshold?: number | null;
 }
 
 export const machineDetectionConfigurationSchema: Schema<MachineDetectionConfiguration> = object(
@@ -69,5 +70,6 @@ export const machineDetectionConfigurationSchema: Schema<MachineDetectionConfigu
     password: ['password', optional(nullable(string()))],
     fallbackUsername: ['fallbackUsername', optional(nullable(string()))],
     fallbackPassword: ['fallbackPassword', optional(nullable(string()))],
+    machineSpeechEndThreshold: ['machineSpeechEndThreshold', optional(nullable(number()))],
   }
 );
