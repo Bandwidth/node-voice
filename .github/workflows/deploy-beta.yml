@@ -3,7 +3,6 @@ name: Deploy Beta
 on:
   release:
     types: [published]
-    branches: '!main'
 
 jobs:
   deploy_beta:
