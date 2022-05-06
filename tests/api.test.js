@@ -45,7 +45,6 @@ describe('api', () => {
 
         // get call state
         const callId = createCallResponse.result.callId;
-
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
         expect(getCallStateResponse.result.applicationId).toEqual(applicationId);
