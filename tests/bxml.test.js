@@ -101,6 +101,28 @@ describe("Bxml", function() {
     });
 });
 
+//Tests that the bxml.toBxml adds verbs properly
+describe("Adding verbs to Bxml", function() {
+    describe("#toBxml()", function() {
+        it("should return a valid bxml tag with a SpeakSentence and Pause", function() {
+            var speakSentence = new SpeakSentence({
+                sentence: "test",
+                voice: "susan",
+                gender: "female",
+                locale: "en_US",
+            });
+            var pause = new Pause({
+                duration: 3
+            });
+
+            var bxml = new Bxml(speakSentence,pause);
+
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence voice=\"susan\" locale=\"en_US\" gender=\"female\">test</SpeakSentence><Pause duration=\"3\"/></Bxml>";
+            expect(bxml.toBxml()).toEqual(expectedString);
+        });
+    });
+});
+
 //Tests for Hangup
 describe("Hangup", function() {
     describe("#toBxml()", function() {
