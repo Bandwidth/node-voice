@@ -1,4 +1,5 @@
 import { Response,
+  Bxml,
   Gather,
   Bridge,
   StopGather,
@@ -17,8 +18,7 @@ import { Response,
   Pause,
   Forward,
   Hangup,
-  Transfer,
-  Bxml
+  Transfer
 } from '../src';
 
 //Test for Conference verb
@@ -85,6 +85,18 @@ describe("Response", function() {
 
             var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response/>";
             expect(response.toBxml()).toEqual(expectedString);
+        });
+    });
+});
+
+//Tests for Bxml
+describe("Bxml", function() {
+    describe("#toBxml()", function() {
+        it("should return empty bxml tag with no verbs", function() {
+            var bxml = new Bxml()
+
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml/>";
+            expect(bxml.toBxml()).toEqual(expectedString);
         });
     });
 });
@@ -562,17 +574,4 @@ describe("StopGather", function(){
       expect(response.toBxml()).toEqual(expectedString);
     });
   });
-});
-
-
-//Tests for Bxml
-describe("Bxml", function() {
-    describe("#toBxml()", function() {
-        it("should return empty bxml tag with no verbs", function() {
-            var bxml = new Bxml()
-
-            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml/>";
-            expect(bxml.toBxml()).toEqual(expectedString);
-        });
-    });
 });
