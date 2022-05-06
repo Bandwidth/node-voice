@@ -54,7 +54,6 @@ import {
   transcriptionResponseSchema,
 } from '../models/transcriptionResponse';
 import { array, number, optional, string } from '../schema';
-import { XML_CONTENT_TYPE } from 'http/httpHeaders';
 
 export class ApiController extends BaseController {
   /**
@@ -166,7 +165,7 @@ export class ApiController extends BaseController {
   ): Promise<ApiResponse<void>> {
     const req = this.createRequest('PUT');
     req.baseUrl('VoiceDefault');
-    req.contentType(XML_CONTENT_TYPE)
+    req.contentType('application/xml; charset=utf-8');
     const mapped = req.prepareArgs({
       accountId: [accountId, string()],
       callId: [callId, string()],
