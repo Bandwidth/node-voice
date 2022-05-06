@@ -54,19 +54,6 @@ describe('api', () => {
         expect(getCallStateResponse.result.callId).toEqual(callId);
     });
 
-    it('should modify an existing call with new bxml', async () => {
-        // modify call bxml
-        const accountId = process.env.BW_ACCOUNT_ID;
-        const callId = "c-28bba681-a085c10c-4601-446a-a255-d513cc80e04";
-        const body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml/>";
-
-
-        const modifyCallBxmlResponse = await controller.modifyCallBxml(accountId, callId, body);
-        expect(modifyCallBxmlResponse.result.callId).toEqual(callId);
-        expect(modifyCallBxmlResponse.result.body).toEqual(body);
-    });
-
-
     it('should create call with AMD and get call state', async () => {
         // create call
         const accountId = process.env.BW_ACCOUNT_ID;
