@@ -57,18 +57,11 @@ describe('api', () => {
     it('should modify an existing call with new bxml', async () => {
         // modify call bxml
         const accountId = process.env.BW_ACCOUNT_ID;
-        const from = process.env.BW_NUMBER;
-        const to = process.env.USER_NUMBER;
-        const answerUrl = `${process.env.BASE_CALLBACK_URL}/callbacks/answer`;
-        const applicationId = process.env.BW_VOICE_APPLICATION_ID;
         const callId = "c-28bba681-a085c10c-4601-446a-a255-d513cc80e04";
         const body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml/>";
 
 
         const modifyCallBxmlResponse = await controller.modifyCallBxml(accountId, callId, body);
-        expect(modifyCallBxmlResponse.result.applicationId).toEqual(applicationId);
-        expect(modifyCallBxmlResponse.result.to).toEqual(to);
-        expect(modifyCallBxmlResponse.result.from).toEqual(from);
         expect(modifyCallBxmlResponse.result.callId).toEqual(callId);
         expect(modifyCallBxmlResponse.result.body).toEqual(body);
     });
