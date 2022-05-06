@@ -1,4 +1,4 @@
-import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration, Environment } from '../src';
+import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration, Environment, Bxml } from '../src';
 
 let controller;
 
@@ -43,8 +43,13 @@ describe('api', () => {
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
 
+        // modify call bxml
+
+
+
         // get call state
         const callId = createCallResponse.result.callId;
+
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
         expect(getCallStateResponse.result.applicationId).toEqual(applicationId);
@@ -52,6 +57,39 @@ describe('api', () => {
         expect(getCallStateResponse.result.from).toEqual(from);
         expect(getCallStateResponse.result.callId).toEqual(callId);
     });
+
+    it('should create call and then modify the call with new bxml', async () => {
+        // create call
+        const accountId = process.env.BW_ACCOUNT_ID;
+        const from = process.env.BW_NUMBER;
+        const to = process.env.USER_NUMBER;
+        const answerUrl = `${process.env.BASE_CALLBACK_URL}/callbacks/answer`;
+        const applicationId = process.env.BW_VOICE_APPLICATION_ID;
+        const body = {
+            from: from,
+            to: to,
+            answerUrl: answerUrl,
+            applicationId: applicationId,
+          }
+
+        const createCallResponse = await controller.createCall(accountId, body);
+        expect(createCallResponse.result.applicationId).toEqual(applicationId);
+        expect(createCallResponse.result.to).toEqual(to);
+        expect(createCallResponse.result.from).toEqual(from);
+
+        // modify call bxml
+        const callId = createCallResponse.result.callId;
+        const bxmlString = "Bxml string";
+
+
+        const modifyCallBxmlResponse = await controller.modifyCallBxml(accountId, callId, bxmlString)
+        expect(modifyCallBxmlResponse.result.applicationId).toEqual(applicationId);
+        expect(modifyCallBxmlResponse.result.to).toEqual(to);
+        expect(modifyCallBxmlResponse.result.from).toEqual(from);
+        expect(modifyCallBxmlResponse.result.callId).toEqual(callId);
+        expect(modifyCallBxmlResponse.result.bxmlString).toEqual(bxmlString);
+    });
+
 
     it('should create call with AMD and get call state', async () => {
         // create call

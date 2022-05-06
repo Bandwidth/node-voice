@@ -170,4 +170,4 @@ export const AUTHORIZATION_HEADER = 'authorization';
 export const FORM_URLENCODED_CONTENT_TYPE = 'application/x-www-form-urlencoded';
 export const JSON_CONTENT_TYPE = 'application/json';
 export const TEXT_CONTENT_TYPE = 'text/plain; charset=utf-8';
-export const XML_CONTENT_TYPE = 'application/xml';
+export const XML_CONTENT_TYPE = 'application/xml; charset=utf-8';
