@@ -1,4 +1,4 @@
-import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration, Environment} from '../src';
+import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration, Environment } from '../src';
 
 let controller;
 
@@ -45,7 +45,6 @@ describe('api', () => {
 
         // get call state
         const callId = createCallResponse.result.callId;
-
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
         expect(getCallStateResponse.result.applicationId).toEqual(applicationId);
