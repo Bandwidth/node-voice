@@ -1,4 +1,5 @@
 export * from './response'
+export * from './bxml'
 export * from './gather'
 export * from './speakSentence'
 export * from './bridge'
