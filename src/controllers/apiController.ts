@@ -177,7 +177,7 @@ export class ApiController extends BaseController {
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
     req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
     req.throwOn(404, ExternalApiError, 'The resource specified cannot be found or does not belong to you.');
-    req.throwOn(415, ExternalApiError, 'We don\'t support that media type. If a request body is required, please send it to us as `application/json`.');
+    req.throwOn(415, ExternalApiError, 'We don\'t support that media type. If a request body is required, please send it to us as `application/xml`.');
     req.throwOn(429, ExternalApiError, 'You\'re sending requests to this endpoint too frequently. Please slow your request rate down and try again.');
     req.throwOn(500, ExternalApiError, 'Something unexpected happened. Please try again.');
     return req.call(requestOptions);
