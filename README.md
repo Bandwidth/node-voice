@@ -84,9 +84,6 @@ console.log(response.toBxml());
 
 This package can be used with Node >= 10
 
-## Documentation
-
-Documentation for this package can be found at https://dev.bandwidth.com/sdks/node.html
 
 ## Credentials
 
