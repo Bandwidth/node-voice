@@ -42,6 +42,7 @@ describe('api', () => {
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
+        expect(createCallResponse.result.enqueuedTime).toBeTruthy();
 
         // get call state
         const callId = createCallResponse.result.callId;
@@ -51,6 +52,8 @@ describe('api', () => {
         expect(getCallStateResponse.result.to).toEqual(to);
         expect(getCallStateResponse.result.from).toEqual(from);
         expect(getCallStateResponse.result.callId).toEqual(callId);
+        expect(getCallStateResponse.result.enqueuedTime).toBeTruthy();
+        expect(getCallStateResponse.result.enqueuedTime).toEqual(createCallResponse.result.enqueuedTime);
     });
 
     it('should create call with AMD and get call state', async () => {
