@@ -26,6 +26,7 @@ export interface CallState {
   identity?: string | null;
   stirShaken?: Record<string, string>;
   startTime?: string;
+  enqueuedTime?: string;
   answerTime?: string | null;
   endTime?: string | null;
   /** The reason the call was disconnected, or null if the call is still active. Current values are 'cancel', 'timeout', 'busy', 'rejected', 'hangup', 'invalid-bxml', 'callback-error', 'application-error', 'error', 'account-limit', 'node-capacity-exceeded' and 'unknown'. Additional causes may be added in the future, so your application must be tolerant of unknown values. */
@@ -47,6 +48,7 @@ export const callStateSchema: Schema<CallState> = object({
   identity: ['identity', optional(nullable(string()))],
   stirShaken: ['stirShaken', optional(dictWithXmlEntries(string()))],
   startTime: ['startTime', optional(string())],
+  enqueuedTime: ['enqueuedTime', optional(string())],
   answerTime: ['answerTime', optional(nullable(string()))],
   endTime: ['endTime', optional(nullable(string()))],
   disconnectCause: ['disconnectCause', optional(nullable(string()))],

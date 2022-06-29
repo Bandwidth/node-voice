@@ -21,7 +21,7 @@ export interface CreateCallResponse {
   applicationId: string;
   to: string;
   from: string;
-  startTime?: string;
+  enqueuedTime?: string;
   callUrl: string;
   callTimeout?: number;
   callbackTimeout?: number;
@@ -45,7 +45,7 @@ export const createCallResponseSchema: Schema<CreateCallResponse> = object({
   applicationId: ['applicationId', string()],
   to: ['to', string()],
   from: ['from', string()],
-  startTime: ['startTime', optional(string())],
+  enqueuedTime: ['enqueuedTime', optional(string())],
   callUrl: ['callUrl', string()],
   callTimeout: ['callTimeout', optional(number())],
   callbackTimeout: ['callbackTimeout', optional(number())],
