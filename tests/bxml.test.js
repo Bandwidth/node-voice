@@ -210,11 +210,12 @@ describe("Forward", function() {
                 callTimeout: 3,
                 diversionTreatment: "none",
                 diversionReason: "away",
+                uui: "342342ef34%3Bencoding%3Dhex",
             });
 
             var response = new Response(forward);
 
-            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Forward to=\"+18888888888\" from=\"+19999999999\" callTimeout=\"3\" diversionTreatment=\"none\" diversionReason=\"away\"/></Response>";
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Forward to=\"+18888888888\" from=\"+19999999999\" callTimeout=\"3\" diversionTreatment=\"none\" diversionReason=\"away\" uui=\"342342ef34%3Bencoding%3Dhex\"/></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });
