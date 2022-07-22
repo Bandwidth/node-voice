@@ -11,6 +11,8 @@ export interface ForwardOptions {
     diversionTreatment?: string
 
     diversionReason?: string
+
+    uui?: string
 }
 
 export class Forward implements ForwardOptions, Verb {
@@ -24,12 +26,15 @@ export class Forward implements ForwardOptions, Verb {
 
     diversionReason?: string
 
+    uui?: string
+
     constructor(options: ForwardOptions) {
         this.to = options.to
         this.from = options.from
         this.callTimeout = options.callTimeout
         this.diversionReason = options.diversionReason
         this.diversionTreatment = options.diversionTreatment
+        this.uui = options.uui
     }
 
     addXml(xml: XMLElement) {
@@ -53,6 +58,10 @@ export class Forward implements ForwardOptions, Verb {
 
         if (this.diversionReason !== undefined) {
             attributes['diversionReason'] = this.diversionReason
+        }
+
+        if (this.uui !== undefined) {
+            attributes['uui'] = this.uui
         }
 
         xml.ele('Forward', attributes)
