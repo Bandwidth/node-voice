@@ -544,11 +544,13 @@ describe("StartStream", function() {
 describe("StopStream", function() {
     describe("#toBxml()", function() {
         it("should generate a proper StopStream tag", function() {
-            var stopStream = new StopStream();
+            var stopStream = new StopStream({
+                name: "test"
+            });
 
             var response = new Response(stopStream);
 
-            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopStream/></Response>";
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopStream name=\"test\"/></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });
