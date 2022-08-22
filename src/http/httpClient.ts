@@ -115,12 +115,12 @@ export class HttpClient {
       setHeaderIfNotSet(newRequest.headers || {}, CONTENT_TYPE_HEADER, contentType);
       newRequest.data = requestBody.content.file;
     } 
-    // else if (requestBody?.type == '') {
+    else if (requestBody && typeof(requestBody['type']) !== 'undefined') {
 
-    //   throw new Error(
-    //     `HTTP client encountered unknown body type '${requestBody?.type}'. Could not execute HTTP request.`
-    //   );
-    // }
+      throw new Error(
+        `HTTP client encountered unknown body type '${requestBody["type"]}'. Could not execute HTTP request.`
+      );
+    }
 
     if (req.responseType === 'stream') {
       newRequest.responseType = isNode ? 'stream' : 'blob';
