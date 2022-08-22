@@ -63,7 +63,7 @@ export class HttpClient {
         password: req.auth.password || '',
       };
     }
-
+    
     const requestBody = req.body;
     if (requestBody?.type === 'text') {
       newRequest.data = requestBody.content;
@@ -91,14 +91,14 @@ export class HttpClient {
       }
 
       newRequest.data = form;
-      mergeHeaders(newRequest.headers, form.getHeaders());
+      mergeHeaders(newRequest.headers || {} , form.getHeaders());
     } else if (
       requestBody?.type === 'form-data' ||
       requestBody?.type === 'form'
     ) {
       // Create form-urlencoded request
       setHeader(
-        newRequest.headers,
+        newRequest.headers || {},
         CONTENT_TYPE_HEADER,
         FORM_URLENCODED_CONTENT_TYPE
       );
@@ -112,13 +112,15 @@ export class HttpClient {
         // Otherwise, use the content type if available.
         contentType = requestBody.content.options.contentType;
       }
-      setHeaderIfNotSet(newRequest.headers, CONTENT_TYPE_HEADER, contentType);
+      setHeaderIfNotSet(newRequest.headers || {}, CONTENT_TYPE_HEADER, contentType);
       newRequest.data = requestBody.content.file;
-    } else if (requestBody?.type !== undefined) {
-      throw new Error(
-        `HTTP client encountered unknown body type '${requestBody?.type}'. Could not execute HTTP request.`
-      );
-    }
+    } 
+    // else if (requestBody?.type == '') {
+
+    //   throw new Error(
+    //     `HTTP client encountered unknown body type '${requestBody?.type}'. Could not execute HTTP request.`
+    //   );
+    // }
 
     if (req.responseType === 'stream') {
       newRequest.responseType = isNode ? 'stream' : 'blob';
