@@ -18,7 +18,9 @@ import { Response,
   Pause,
   Forward,
   Hangup,
-  Transfer
+  Transfer,
+  StartStream,
+  StopStream,
 } from '../src';
 
 //Test for Conference verb
@@ -512,6 +514,44 @@ describe("StopRecording", function() {
             var response = new Response(stopRecording);
 
             var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopRecording/></Response>";
+            expect(response.toBxml()).toEqual(expectedString);
+        });
+    });
+});
+
+//Tests for StartStream
+describe("StartStream", function() {
+    describe("#toBxml()", function() {
+        it("should generate a proper StartStream tag", function() {
+            var startStream = new StartStream({
+                destination: "https://url.com",
+                streamEventMethod: "POST",
+                username: "user",
+                password: "pass",
+                name: "test",
+                tracks: "inbound",
+                streamEventUrl: "https://url.com",
+            });
+
+            var response = new Response(startStream);
+
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream destination=\"https://url.com\" name=\"test\" tracks=\"inbound\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"/></Response>";
+            expect(response.toBxml()).toEqual(expectedString);
+        });
+    });
+});
+
+//Tests for StopStream
+describe("StopStream", function() {
+    describe("#toBxml()", function() {
+        it("should generate a proper StopStream tag", function() {
+            var stopStream = new StopStream({
+                name: "test"
+            });
+
+            var response = new Response(stopStream);
+
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopStream name=\"test\"/></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });
