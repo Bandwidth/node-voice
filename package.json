@@ -41,7 +41,7 @@
     "@apimatic/core": "^0.7.6",
     "@apimatic/schema": "^0.6.0",
     "@types/node": "^14.18.21",
-    "axios": "^0.21.4",
+    "axios": "^0.27.2",
     "detect-node": "^2.0.4",
     "form-data": "^3.0.0",
     "lodash.flatmap": "^4.5.0",
