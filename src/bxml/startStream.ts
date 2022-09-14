@@ -9,6 +9,8 @@ export interface StartStreamOptions {
     tracks?: string
 
     streamEventUrl?: string
+
+    streamParams?: Verb[]
     
     streamEventMethod?: string
     
@@ -25,6 +27,8 @@ export class StartStream implements StartStreamOptions, Verb {
     tracks?: string
 
     streamEventUrl?: string
+
+    streamParams?: Verb[]
     
     streamEventMethod?: string
     
@@ -37,6 +41,7 @@ export class StartStream implements StartStreamOptions, Verb {
         this.name = options.name
         this.tracks = options.tracks
         this.streamEventUrl = options.streamEventUrl
+        this.streamParams = options?.streamParams || []
         this.streamEventMethod = options.streamEventMethod
         this.username = options.username
         this.password = options.password
@@ -72,7 +77,13 @@ export class StartStream implements StartStreamOptions, Verb {
             attributes['password'] = this.password
         }
 
-        xml.ele('StartStream', attributes)
+        var startStream = xml.ele('StartStream', attributes)
+
+        if (Array.isArray(this.streamParams)) {
+            this.streamParams.forEach( (verb) => {
+                verb.addXml(startStream)
+            })            
+        }
     }
 
 }
