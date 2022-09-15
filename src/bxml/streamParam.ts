@@ -2,15 +2,15 @@ import { XMLElement } from 'xmlbuilder'
 import { Verb } from './Verb'
 
 export interface StreamParamOptions {
-    name?: string
+    name: string
 
-    value?: string
+    value: string
 }
 
 export class StreamParam implements StreamParamOptions, Verb {
-    name?: string
+    name: string
 
-    value?: string
+    value: string
 
     constructor(options: StreamParamOptions) {
         this.name = options.name
