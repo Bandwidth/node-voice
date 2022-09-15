@@ -20,6 +20,7 @@ import { Response,
   Hangup,
   Transfer,
   StartStream,
+  StreamParam,
   StopStream,
 } from '../src';
 
@@ -536,6 +537,39 @@ describe("StartStream", function() {
             var response = new Response(startStream);
 
             var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream destination=\"https://url.com\" name=\"test\" tracks=\"inbound\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"/></Response>";
+            expect(response.toBxml()).toEqual(expectedString);
+        });
+    });
+});
+
+//Tests for StartStream with Multiple Stream Params
+describe("StartStreamMultipleStreamParams", function() {
+    describe("#toBxml()", function() {
+        it("should generate a proper StartStream tag", function() {
+            var streamParam1 = new StreamParam({
+                name: "name1",
+                value: "value1"
+            })
+
+            var streamParam2 = new StreamParam({
+                name: "name2",
+                value: "value2"
+            })
+
+            var startStream = new StartStream({
+                destination: "https://url.com",
+                streamEventMethod: "POST",
+                username: "user",
+                password: "pass",
+                name: "test",
+                tracks: "inbound",
+                streamEventUrl: "https://url.com",
+                streamParams: [streamParam1, streamParam2]
+            });
+
+            var response = new Response(startStream);
+
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream destination=\"https://url.com\" name=\"test\" tracks=\"inbound\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"><StreamParam name=\"name1\" tracks=\"value1\"/><StreamParam name=\"name2\" tracks=\"value2\"/></StartStream></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });
