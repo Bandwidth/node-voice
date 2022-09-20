@@ -569,7 +569,7 @@ describe("StartStreamMultipleStreamParams", function() {
 
             var response = new Response(startStream);
 
-            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream destination=\"https://url.com\" name=\"test\" tracks=\"inbound\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"><StreamParam name=\"name1\" tracks=\"value1\"/><StreamParam name=\"name2\" tracks=\"value2\"/></StartStream></Response>";
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream destination=\"https://url.com\" name=\"test\" value=\"inbound\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"><StreamParam name=\"name1\" value=\"value1\"/><StreamParam name=\"name2\" value=\"value2\"/></StartStream></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });
