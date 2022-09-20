@@ -25,7 +25,7 @@ export class StreamParam implements StreamParamOptions, Verb {
         }
 
         if (this.value !== undefined) {
-            attributes['tracks'] = this.value
+            attributes['value'] = this.value
         }
 
         xml.ele('StreamParam', attributes)
