@@ -34,16 +34,16 @@ jobs:
           fi
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Build and Test npm Package
         run: |
-            npm install
-            npm run build
-            npm run test --if-present
+          npm install
+          npm run build
+          npm run test --if-present
         env:
           BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
           BW_USERNAME: ${{ secrets.BW_USERNAME }}
@@ -56,7 +56,7 @@ jobs:
 
       - name: Publish npm Package
         run: |
-              npm version $RELEASE_VERSION --no-git-tag-version
-              npm publish --access public --tag beta
+          npm version $RELEASE_VERSION --no-git-tag-version
+          npm publish --access public --tag beta
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
