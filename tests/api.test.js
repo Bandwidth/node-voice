@@ -67,7 +67,7 @@ describe('api', () => {
         expect(Date.parse(createCallResponse.result.enqueuedTime)).toBeTruthy();
 
         // get call state
-        await new Promise(r => setTimeout(r, 4000));
+        await new Promise(r => setTimeout(r, 3000));
         const callId = createCallResponse.result.callId;
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
