@@ -67,6 +67,7 @@ describe('api', () => {
         expect(Date.parse(createCallResponse.result.enqueuedTime)).toBeTruthy();
 
         // get call state
+        await new Promise(r => setTimeout(r, 3000));
         const callId = createCallResponse.result.callId;
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
@@ -111,6 +112,7 @@ describe('api', () => {
         expect(createCallResponse.result.from).toEqual(from);
 
         // get call state
+        await new Promise(r => setTimeout(r, 3000));
         const callId = createCallResponse.result.callId;
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
