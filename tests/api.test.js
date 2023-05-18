@@ -61,7 +61,7 @@ describe('api', () => {
             applicationId: applicationId,
         };
         const createCallResponse = await controller.createCall(accountId, body);
-	await sleep(15000);
+	await sleep(3000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
@@ -107,7 +107,7 @@ describe('api', () => {
         };
 
         const createCallResponse = await controller.createCall(accountId, body);
-	await sleep(15000);
+	await sleep(3000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
@@ -139,7 +139,7 @@ describe('api', () => {
         };
 
         const createCallResponse = await controller.createCall(accountId, body);
-	await sleep(15000);
+	await sleep(3000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
