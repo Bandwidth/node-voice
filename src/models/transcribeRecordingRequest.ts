@@ -17,7 +17,7 @@ export interface TranscribeRecordingRequest {
   password?: string | null;
   tag?: string | null;
   callbackTimeout?: number | null;
-  detectLanguagt?: boolean| undefined;
+  detectLanguage?: boolean| undefined;
 }
 
 export const transcribeRecordingRequestSchema: Schema<TranscribeRecordingRequest> = object(
