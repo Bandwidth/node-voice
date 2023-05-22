@@ -441,6 +441,7 @@ describe("Record", function() {
                 tag: "tag",
                 terminatingDigits: "123",
                 maxDuration: 3,
+                detectLanguage: true,
                 fileFormat: "wav",
                 recordCompleteFallbackUrl: "https://test.com",
                 recordCompleteFallbackMethod: "GET",
@@ -450,7 +451,7 @@ describe("Record", function() {
 
             var response = new Response(record);
 
-            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Record username=\"user\" password=\"pass\" recordCompleteUrl=\"https://url.com\" recordCompleteMethod=\"POST\" recordingAvailableUrl=\"https://url.com\" recordingAvailableMethod=\"POST\" tag=\"tag\" terminatingDigits=\"123\" maxDuration=\"3\" fileFormat=\"wav\" recordCompleteFallbackUrl=\"https://test.com\" recordCompleteFallbackMethod=\"GET\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\"/></Response>";
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Record username=\"user\" password=\"pass\" recordCompleteUrl=\"https://url.com\" recordCompleteMethod=\"POST\" recordingAvailableUrl=\"https://url.com\" recordingAvailableMethod=\"POST\" tag=\"tag\" terminatingDigits=\"123\" maxDuration=\"3\" fileFormat=\"wav\" detectLanguage=\"true\" recordCompleteFallbackUrl=\"https://test.com\" recordCompleteFallbackMethod=\"GET\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\"/></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });

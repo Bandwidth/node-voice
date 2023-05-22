@@ -23,6 +23,8 @@ export interface RecordOptions {
     fileFormat?: string
 
     transcribe: boolean | undefined
+  
+    detectLanguage?: boolean 
 
     transcriptionAvailableUrl?: string
 
@@ -61,6 +63,8 @@ export class Record implements RecordOptions, Verb {
     fileFormat?: string
 
     transcribe: boolean | undefined
+  
+    detectLanguage?: boolean 
 
     transcriptionAvailableUrl?: string
 
@@ -88,6 +92,7 @@ export class Record implements RecordOptions, Verb {
         this.maxDuration= options?.maxDuration
         this.fileFormat = options?.fileFormat
         this.transcribe = options?.transcribe
+        this.detectLanguage = options?.detectLanguage
         this.transcriptionAvailableUrl = options?.transcriptionAvailableUrl
         this.transcriptionAvailableMethod = options?.transcriptionAvailableMethod
         this.silenceTimeout = options?.silenceTimeout
@@ -138,6 +143,10 @@ export class Record implements RecordOptions, Verb {
 
         if (this.fileFormat !== undefined) {
             attributes['fileFormat'] = this.fileFormat
+        }
+
+        if (this.detectLanguage !== undefined) {
+            attributes['detectLanguage'] = `${this.detectLanguage}`
         }
 
         if (this.transcribe !== undefined) {

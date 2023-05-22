@@ -1,6 +1,7 @@
 import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration, Environment } from '../src';
 import { HttpClient } from '../src/http/httpClient';
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 let controller;
 
 beforeEach(() => {
@@ -59,8 +60,8 @@ describe('api', () => {
             answerUrl: answerUrl,
             applicationId: applicationId,
         };
-
         const createCallResponse = await controller.createCall(accountId, body);
+	await sleep(1000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
@@ -107,6 +108,7 @@ describe('api', () => {
         };
 
         const createCallResponse = await controller.createCall(accountId, body);
+	await sleep(1000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
@@ -139,6 +141,7 @@ describe('api', () => {
         };
 
         const createCallResponse = await controller.createCall(accountId, body);
+	await sleep(1000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
