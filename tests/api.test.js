@@ -1,7 +1,7 @@
 import { ApiError, ApiController, Client, ModeEnum, CallbackMethodEnum, MachineDetectionConfiguration, Environment } from '../src';
 import { HttpClient } from '../src/http/httpClient';
 
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+const sleepMs = ms => new Promise(r => setTimeout(r, ms));
 let controller;
 
 beforeEach(() => {
@@ -48,6 +48,7 @@ describe('http client', () => {
 
 describe('api', () => {
     it('should create call and get call state', async () => {
+        jest.setTimeout(11000);
         // create call
         const accountId = process.env.BW_ACCOUNT_ID;
         const from = process.env.BW_NUMBER;
@@ -61,14 +62,13 @@ describe('api', () => {
             applicationId: applicationId,
         };
         const createCallResponse = await controller.createCall(accountId, body);
-	await sleep(15000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
         expect(Date.parse(createCallResponse.result.enqueuedTime)).toBeTruthy();
-
+        
         // get call state
-        await new Promise(r => setTimeout(r, 3000));
+	    await sleepMs(10000);
         const callId = createCallResponse.result.callId;
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
@@ -108,13 +108,12 @@ describe('api', () => {
         };
 
         const createCallResponse = await controller.createCall(accountId, body);
-	await sleep(15000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
-
+        
         // get call state
-        await new Promise(r => setTimeout(r, 3000));
+        await sleepMs(10000);
         const callId = createCallResponse.result.callId;
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
@@ -141,7 +140,7 @@ describe('api', () => {
         };
 
         const createCallResponse = await controller.createCall(accountId, body);
-	await sleep(15000);
+	    await sleepMs(10000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
