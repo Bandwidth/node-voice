@@ -66,9 +66,9 @@ describe('api', () => {
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
         expect(Date.parse(createCallResponse.result.enqueuedTime)).toBeTruthy();
-        
+
         // get call state
-	    await sleepMs(10000);
+        await sleepMs(10000);
         const callId = createCallResponse.result.callId;
         const getCallStateResponse = await controller.getCall(accountId, callId);
 
@@ -111,7 +111,7 @@ describe('api', () => {
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
-        
+
         // get call state
         await sleepMs(10000);
         const callId = createCallResponse.result.callId;
@@ -140,7 +140,7 @@ describe('api', () => {
         };
 
         const createCallResponse = await controller.createCall(accountId, body);
-	    await sleepMs(10000);
+        await sleepMs(10000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
