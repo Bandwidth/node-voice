@@ -140,7 +140,6 @@ describe('api', () => {
         };
 
         const createCallResponse = await controller.createCall(accountId, body);
-        await sleepMs(10000);
         expect(createCallResponse.result.applicationId).toEqual(applicationId);
         expect(createCallResponse.result.to).toEqual(to);
         expect(createCallResponse.result.from).toEqual(from);
