@@ -20,13 +20,9 @@ export class StreamParam implements StreamParamOptions, Verb {
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}
 
-        if (this.name !== undefined) {
-            attributes['name'] = this.name
-        }
+        attributes['name'] = this.name
 
-        if (this.value !== undefined) {
-            attributes['value'] = this.value
-        }
+        attributes['value'] = this.value
 
         xml.ele('StreamParam', attributes)
     }
