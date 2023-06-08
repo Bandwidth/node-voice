@@ -81,8 +81,7 @@ describe('api', () => {
             expect(Date.parse(getCallStateResponse.result.enqueuedTime)).toBeTruthy();
             expect(getCallStateResponse.result.enqueuedTime).toEqual(createCallResponse.result.enqueuedTime);
         } catch (e) {
-            if (!(e instanceof ExternalApiError)) { throw e; }
-            if (e.code != 404) { throw e; }
+            if (e.statusCode != 404) { throw e; }
         }
     });
 
@@ -130,8 +129,7 @@ describe('api', () => {
             expect(getCallStateResponse.result.from).toEqual(from);
             expect(getCallStateResponse.result.callId).toEqual(callId);
         } catch (e) {
-            if (!(e instanceof ExternalApiError)) { throw e; }
-            if (e.code != 404) { throw e; }
+            if (e.statusCode != 404) { throw e; }
         }
     });
 
