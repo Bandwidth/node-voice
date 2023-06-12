@@ -48,7 +48,6 @@ describe('http client', () => {
 
 describe('api', () => {
     it('should create call and get call state', async () => {
-        jest.setTimeout(11000);
         // create call
         const accountId = process.env.BW_ACCOUNT_ID;
         const from = process.env.BW_NUMBER;
