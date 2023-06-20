@@ -1,18 +1,18 @@
 import { XMLElement } from 'xmlbuilder'
 import { Verb } from './Verb'
 
-export interface StreamParamOptions {
+export interface CustomParamOptions {
     name: string
 
     value: string
 }
 
-export class StreamParam implements StreamParamOptions, Verb {
+export class CustomParam implements CustomParamOptions, Verb {
     name: string
 
     value: string
 
-    constructor(options: StreamParamOptions) {
+    constructor(options: CustomParamOptions) {
         this.name = options.name
         this.value = options.value
     }
@@ -24,7 +24,7 @@ export class StreamParam implements StreamParamOptions, Verb {
 
         attributes['value'] = this.value
 
-        xml.ele('StreamParam', attributes)
+        xml.ele('CustomParam', attributes)
     }
 
 }

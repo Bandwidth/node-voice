@@ -41,7 +41,7 @@ export class StartStream implements StartStreamOptions, Verb {
         this.name = options.name
         this.tracks = options.tracks
         this.streamEventUrl = options.streamEventUrl
-        this.streamParams = options?.streamParams || []
+        this.streamParams = options.streamParams || []
         this.streamEventMethod = options.streamEventMethod
         this.username = options.username
         this.password = options.password
@@ -50,9 +50,7 @@ export class StartStream implements StartStreamOptions, Verb {
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}
 
-        if (this.destination !== undefined) {
-            attributes['destination'] = this.destination
-        }
+        attributes['destination'] = this.destination
 
         if (this.name !== undefined) {
             attributes['name'] = this.name

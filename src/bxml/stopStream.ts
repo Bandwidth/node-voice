@@ -15,10 +15,7 @@ export class StopStream implements StopStreamOptions, Verb {
     addXml(xml: XMLElement) {
         const attributes: {[key: string]: string} = {}
 
-
-        if (this.name !== null) {
-            attributes['name'] = `${this.name}`
-        }
+        attributes['name'] = this.name
 
         xml.ele('StopStream', attributes)
         

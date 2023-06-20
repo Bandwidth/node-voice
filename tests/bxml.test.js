@@ -22,6 +22,9 @@ import { Response,
   StartStream,
   StreamParam,
   StopStream,
+  StartTranscription,
+  StopTranscription,
+  CustomParam
 } from '../src';
 
 //Test for Conference verb
@@ -81,9 +84,9 @@ describe("Nested Gather", () => {
 });
 
 //Tests for Response
-describe("Response", function() {
-    describe("#toBxml()", function() {
-        it("should return empty response tag with no verbs", function() {
+describe("Response", () => {
+    describe("#toBxml()", () => {
+        it("should return empty response tag with no verbs", () => {
             var response = new Response()
 
             var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response/>";
@@ -93,9 +96,9 @@ describe("Response", function() {
 });
 
 //Tests for Bxml
-describe("Bxml", function() {
-    describe("#toBxml()", function() {
-        it("should return empty bxml tag with no verbs", function() {
+describe("Bxml", () => {
+    describe("#toBxml()", () => {
+        it("should return empty bxml tag with no verbs", () => {
             var bxml = new Bxml()
 
             var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml/>";
@@ -105,9 +108,9 @@ describe("Bxml", function() {
 });
 
 //Tests that the bxml.toBxml adds verbs properly
-describe("Adding verbs to Bxml", function() {
-    describe("#toBxml()", function() {
-        it("should return a valid bxml tag with a SpeakSentence and Pause", function() {
+describe("Adding verbs to Bxml", () => {
+    describe("#toBxml()", () => {
+        it("should return a valid bxml tag with a SpeakSentence and Pause", () => {
             var speakSentence = new SpeakSentence({
                 sentence: "test",
                 voice: "susan",
@@ -127,9 +130,9 @@ describe("Adding verbs to Bxml", function() {
 });
 
 //Tests for Hangup
-describe("Hangup", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Hangup tag", function() {
+describe("Hangup", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Hangup tag", () => {
             var hangup = new Hangup();
 
             var response = new Response(hangup);
@@ -141,9 +144,9 @@ describe("Hangup", function() {
 });
 
 //Tests for PlayAudio
-describe("PlayAudio", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper PlayAudio tag", function() {
+describe("PlayAudio", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper PlayAudio tag", () => {
             var playAudio = new PlayAudio({
                 url: "https://test.com",
                 username: "user",
@@ -159,9 +162,9 @@ describe("PlayAudio", function() {
 });
 
 //Tests for SpeakSentence
-describe("SpeakSentence", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper SpeakSentence tag", function() {
+describe("SpeakSentence", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper SpeakSentence tag", () => {
             var speakSentence = new SpeakSentence({
                 sentence: "test",
                 voice: "susan",
@@ -174,7 +177,7 @@ describe("SpeakSentence", function() {
             var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><SpeakSentence voice=\"susan\" locale=\"en_US\" gender=\"female\">test</SpeakSentence></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
-        it("should generated a proper SpeakSentence tag with SSML", function() {
+        it("should generated a proper SpeakSentence tag with SSML", () => {
             var speakSentence = new SpeakSentence({
                 sentence: 'Hello, you have reached the home of <lang xml:lang="es-MX">Antonio Mendoza</lang>.Please leave a message.'
             });
@@ -188,9 +191,9 @@ describe("SpeakSentence", function() {
 });
 
 //Tests for SendDtmf
-describe("SendDtmf", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper SendDtmf tag", function() {
+describe("SendDtmf", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper SendDtmf tag", () => {
             var sendDtmf = new SendDtmf({
                 dtmf: '123'
             });
@@ -204,9 +207,9 @@ describe("SendDtmf", function() {
 });
 
 //Tests for Forward
-describe("Forward", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Forward tag", function() {
+describe("Forward", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Forward tag", () => {
             var forward = new Forward({
                 to: "+18888888888",
                 from: "+19999999999",
@@ -225,9 +228,9 @@ describe("Forward", function() {
 })
 
 //Tests for Pause
-describe("Pause", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Pause tag", function() {
+describe("Pause", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Pause tag", () => {
             var pause = new Pause({
                 duration: 3
             });
@@ -241,9 +244,9 @@ describe("Pause", function() {
 });
 
 //Tests for Redirect
-describe("Redirect", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Redirect tag", function() {
+describe("Redirect", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Redirect tag", () => {
             var redirect = new Redirect({
                 username: "user",
                 password: "pass",
@@ -265,9 +268,9 @@ describe("Redirect", function() {
 });
 
 //Tests for Gather
-describe("Gather", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Gather tag with a nested SpeakSentence", function() {
+describe("Gather", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Gather tag with a nested SpeakSentence", () => {
             var speakSentence = new SpeakSentence({
                 sentence: "test",
                 voice: "susan",
@@ -293,7 +296,7 @@ describe("Gather", function() {
             var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Gather gatherUrl=\"https://test.com\" gatherMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" terminatingDigits=\"123\" maxDigits=\"3\" interDigitTimeout=\"4\" firstDigitTimeout=\"5\"><SpeakSentence voice=\"susan\" locale=\"en_US\" gender=\"female\">test</SpeakSentence></Gather></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
-        it("should generate a proper Gather tag with a nested PlayAudio", function() {
+        it("should generate a proper Gather tag with a nested PlayAudio", () => {
             var playAudio = new PlayAudio({
                 url: "https://test.com",
                 username: "user",
@@ -318,7 +321,7 @@ describe("Gather", function() {
             var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Gather gatherUrl=\"https://test.com\" gatherMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" terminatingDigits=\"123\" maxDigits=\"3\" interDigitTimeout=\"4\" firstDigitTimeout=\"5\"><PlayAudio username=\"user\" password=\"pass\">https://test.com</PlayAudio></Gather></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
-        it("should generate a proper Gather tag with no nested tags", function() {
+        it("should generate a proper Gather tag with no nested tags", () => {
             var gather = new Gather({
                 gatherUrl: "https://test.com",
                 gatherMethod: "GET",
@@ -346,9 +349,9 @@ describe("Gather", function() {
 });
 
 //Tests for Transfer
-describe("Transfer", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Transfer tag", function() {
+describe("Transfer", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Transfer tag", () => {
             var number1 = new Transfer.PhoneNumber({
                 number: "+17777777777",
                 transferAnswerUrl: "https://test.com",
@@ -403,9 +406,9 @@ describe("Transfer", function() {
 });
 
 //Tests for PlayAudio and SpeakSentence combined
-describe("PlayAudioSpeakSentence", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper PlayAudio and SpeakSentence tag combined", function() {
+describe("PlayAudioSpeakSentence", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper PlayAudio and SpeakSentence tag combined", () => {
             var playAudio = new PlayAudio({
                 url: "https://test.com",
                 username: "user",
@@ -428,9 +431,9 @@ describe("PlayAudioSpeakSentence", function() {
 });
 
 //Tests for Record
-describe("Record", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Record tag", function() {
+describe("Record", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Record tag", () => {
             var record = new Record({
                 recordCompleteUrl: "https://url.com",
                 recordCompleteMethod: "POST",
@@ -458,9 +461,9 @@ describe("Record", function() {
 });
 
 //Tests for StartRecording
-describe("StartRecording", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper StartRecording tag", function() {
+describe("StartRecording", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper StartRecording tag", () => {
             var startRecording = new StartRecording({
                 recordingAvailableUrl: "https://url.com",
                 recordingAvailableMethod: "POST",
@@ -480,9 +483,9 @@ describe("StartRecording", function() {
 });
 
 //Tests for PauseRecording
-describe("PauseRecording", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper PauseRecording tag", function() {
+describe("PauseRecording", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper PauseRecording tag", () => {
             var pauseRecording = new PauseRecording();
 
             var response = new Response(pauseRecording);
@@ -494,9 +497,9 @@ describe("PauseRecording", function() {
 });
 
 //Tests for ResumeRecording
-describe("ResumeRecording", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper ResumeRecording tag", function() {
+describe("ResumeRecording", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper ResumeRecording tag", () => {
             var resumeRecording = new ResumeRecording();
 
             var response = new Response(resumeRecording);
@@ -508,9 +511,9 @@ describe("ResumeRecording", function() {
 });
 
 //Tests for StopRecording
-describe("StopRecording", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper StopRecording tag", function() {
+describe("StopRecording", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper StopRecording tag", () => {
             var stopRecording = new StopRecording();
 
             var response = new Response(stopRecording);
@@ -522,9 +525,9 @@ describe("StopRecording", function() {
 });
 
 //Tests for StartStream
-describe("StartStream", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper StartStream tag", function() {
+describe("StartStream", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper StartStream tag", () => {
             var startStream = new StartStream({
                 destination: "https://url.com",
                 streamEventMethod: "POST",
@@ -544,9 +547,9 @@ describe("StartStream", function() {
 });
 
 //Tests for StartStream with Multiple Stream Params
-describe("StartStreamMultipleStreamParams", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper StartStream tag", function() {
+describe("StartStreamMultipleStreamParams", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper StartStream tag", () => {
             var streamParam1 = new StreamParam({
                 name: "name1",
                 value: "value1"
@@ -577,9 +580,9 @@ describe("StartStreamMultipleStreamParams", function() {
 });
 
 //Tests for StopStream
-describe("StopStream", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper StopStream tag", function() {
+describe("StopStream", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper StopStream tag", () => {
             var stopStream = new StopStream({
                 name: "test"
             });
@@ -592,10 +595,83 @@ describe("StopStream", function() {
     });
 });
 
+//Tests for StartTranscription
+describe("StartTranscription", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper StartTranscription tag", () => {
+            var startTranscription = new StartTranscription({
+                destination: "https://url.com",
+                transcriptionEventMethod: "POST",
+                username: "user",
+                password: "pass",
+                name: "test",
+                tracks: "inbound",
+                transcriptionEventUrl: "https://url.com",
+                stabilized: true
+            });
+
+            var response = new Response(startTranscription);
+
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartTranscription name=\"test\" tracks=\"inbound\" transcriptionEventUrl=\"https://url.com\" transcriptionEventMethod=\"POST\" username=\"user\" password=\"pass\" destination=\"https://url.com\" stabilized=\"true\"/></Response>";
+            expect(response.toBxml()).toEqual(expectedString);
+        });
+    });
+});
+
+//Tests for StartTranscription with Multiple Custom Params
+describe("StartTranscriptionMultipleCustomParams", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper StartTranscription tag", () => {
+            var customParam1 = new CustomParam({
+                name: "name1",
+                value: "value1"
+            })
+
+            var customParam2 = new CustomParam({
+                name: "name2",
+                value: "value2"
+            })
+
+            var startTranscription = new StartTranscription({
+                destination: "https://url.com",
+                transcriptionEventMethod: "POST",
+                username: "user",
+                password: "pass",
+                name: "test",
+                tracks: "inbound",
+                transcriptionEventUrl: "https://url.com",
+                stabilized: true,
+                customParams: [customParam1, customParam2]
+            });
+
+            var response = new Response(startTranscription);
+
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartTranscription name=\"test\" tracks=\"inbound\" transcriptionEventUrl=\"https://url.com\" transcriptionEventMethod=\"POST\" username=\"user\" password=\"pass\" destination=\"https://url.com\" stabilized=\"true\"><CustomParam name=\"name1\" value=\"value1\"/><CustomParam name=\"name2\" value=\"value2\"/></StartTranscription></Response>";
+            expect(response.toBxml()).toEqual(expectedString);
+        });
+    });
+});
+
+//Tests for StopTranscription
+describe("StopTranscription", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper StopTranscription tag", () => {
+            var stopTranscription = new StopTranscription({
+                name: "test"
+            });
+
+            var response = new Response(stopTranscription);
+
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopTranscription name=\"test\"/></Response>";
+            expect(response.toBxml()).toEqual(expectedString);
+        });
+    });
+});
+
 //Tests for Bridge
-describe("Bridge", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Bridge tag", function() {
+describe("Bridge", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Bridge tag", () => {
             var bridge = new Bridge({
                 callId: "c-95ac8d6e-1a31c52e-b38f-4198-93c1-51633ec68f8d",
                 bridgeCompleteUrl: "https://test.com",
@@ -622,9 +698,9 @@ describe("Bridge", function() {
 });
 
 //Test for Ring
-describe("Ring", function() {
-    describe("#toBxml()", function() {
-        it("should generate a proper Ring tag", function() {
+describe("Ring", () => {
+    describe("#toBxml()", () => {
+        it("should generate a proper Ring tag", () => {
             var ring = new Ring({
                 duration: 3,
                 answerCall: false
@@ -639,9 +715,9 @@ describe("Ring", function() {
 });
 
 //Test for StartGather
-describe("StartGather", function(){
-  describe("#toBxml()", function() {
-    it("should generate a proper StartGather tag", function(){
+describe("StartGather", () =>{
+  describe("#toBxml()", () => {
+    it("should generate a proper StartGather tag", () =>{
       var startGather = new StartGather({
           dtmfUrl: "https://test.com",
           dtmfMethod: "POST",
@@ -660,9 +736,9 @@ describe("StartGather", function(){
 });
 
 //Test for StopGather
-describe("StopGather", function(){
-  describe("#toBxml()", function() {
-    it("should generate a proper StopGather tag", function(){
+describe("StopGather", () =>{
+  describe("#toBxml()", () => {
+    it("should generate a proper StopGather tag", () =>{
       var stopGather = new StopGather();
 
       var response = new Response(stopGather);
