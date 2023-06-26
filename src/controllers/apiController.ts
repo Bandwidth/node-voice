@@ -339,7 +339,7 @@ export class ApiController extends BaseController {
     req.throwOn(415, ExternalApiError, 'We don\'t support that media type. If a request body is required, please send it to us as `application/json`.');
     req.throwOn(429, ExternalApiError, 'You\'re sending requests to this endpoint too frequently. Please slow your request rate down and try again.');
     req.throwOn(500, ExternalApiError, 'Something unexpected happened. Please try again.');
-    return req.callAsText(requestOptions);
+    return req.callAsStream(requestOptions);
   }
 
   /**
@@ -745,7 +745,7 @@ export class ApiController extends BaseController {
     req.throwOn(415, ExternalApiError, 'We don\'t support that media type. If a request body is required, please send it to us as `application/json`.');
     req.throwOn(429, ExternalApiError, 'You\'re sending requests to this endpoint too frequently. Please slow your request rate down and try again.');
     req.throwOn(500, ExternalApiError, 'Something unexpected happened. Please try again.');
-    return req.callAsText(requestOptions);
+    return req.callAsStream(requestOptions);
   }
 
   /**
