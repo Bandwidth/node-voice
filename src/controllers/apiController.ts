@@ -148,6 +148,41 @@ export class ApiController extends BaseController {
     return req.call(requestOptions);
   }
 
+
+  /**
+   * Interrupts and replaces an active call's BXML document.
+   *
+   * @param accountId
+   * @param callId
+   * @param body
+   * @return Response from the API call
+   */
+   async modifyCallBxml(
+    accountId: string,
+    callId: string,
+    body: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<void>> {
+    const req = this.createRequest('PUT');
+    req.baseUrl('VoiceDefault');
+    req.contentType('application/xml; charset=utf-8');
+    const mapped = req.prepareArgs({
+      accountId: [accountId, string()],
+      callId: [callId, string()],
+      body: [body, string()],
+    });
+    req.json(mapped.body);
+    req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/bxml`;
+    req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
+    req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
+    req.throwOn(403, ExternalApiError, 'User unauthorized to perform this action.');
+    req.throwOn(404, ExternalApiError, 'The resource specified cannot be found or does not belong to you.');
+    req.throwOn(415, ExternalApiError, 'We don\'t support that media type. If a request body is required, please send it to us as `application/xml`.');
+    req.throwOn(429, ExternalApiError, 'You\'re sending requests to this endpoint too frequently. Please slow your request rate down and try again.');
+    req.throwOn(500, ExternalApiError, 'Something unexpected happened. Please try again.');
+    return req.call(requestOptions);
+  }
+
   /**
    * Pauses or resumes a recording.
    *

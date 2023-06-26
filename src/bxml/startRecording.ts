@@ -18,6 +18,8 @@ export interface StartRecordingOptions {
 
     transcribe?: string
 
+    detectLanguage?: boolean
+
     transcriptionAvailableUrl?: string
 
     transcriptionAvailableMethod?: string
@@ -38,6 +40,8 @@ export class StartRecording implements StartRecordingOptions, Verb {
 
     multiChannel?: boolean
 
+    detectLanguage?: boolean
+
     transcribe?: string
 
     transcriptionAvailableUrl?: string
@@ -53,6 +57,7 @@ export class StartRecording implements StartRecordingOptions, Verb {
         this.fileFormat = options?.fileFormat
         this.multiChannel = options?.multiChannel
         this.transcribe = options?.transcribe
+        this.detectLanguage = options?.detectLanguage
         this.transcriptionAvailableUrl = options?.transcriptionAvailableUrl
         this.transcriptionAvailableMethod = options?.transcriptionAvailableMethod
     }
@@ -86,6 +91,10 @@ export class StartRecording implements StartRecordingOptions, Verb {
 
         if (this.multiChannel !== undefined) {
             attributes['multiChannel'] = `${this.multiChannel}`
+        }
+
+        if (this.detectLanguage !== undefined) {
+            attributes['detectLanguage'] = `${this.detectLanguage}`
         }
 
         if (this.transcribe !== undefined) {

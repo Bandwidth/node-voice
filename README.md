@@ -6,8 +6,8 @@
 |:---:|:---:|
 | Windows 2016 | 12, 14, 16 |
 | Windows 2019 | 12, 14, 16 |
-| Ubuntu 18.04 | 12, 14, 16 |
 | Ubuntu 20.04 | 12, 14, 16 |
+| Ubuntu 22.04 | 12, 14, 16 |
 
 
 Note: As of version 2.0.0, this package has been upgraded to TypeScript
@@ -84,9 +84,6 @@ console.log(response.toBxml());
 
 This package can be used with Node >= 10
 
-## Documentation
-
-Documentation for this package can be found at https://dev.bandwidth.com/sdks/node.html
 
 ## Credentials
 
