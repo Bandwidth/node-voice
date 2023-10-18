@@ -171,7 +171,7 @@ export class ApiController extends BaseController {
       callId: [callId, string()],
       body: [body, string()],
     });
-    req.json(mapped.body);
+    req.text(mapped.body);
     req.appendTemplatePath`/api/v2/accounts/${mapped.accountId}/calls/${mapped.callId}/bxml`;
     req.throwOn(400, ExternalApiError, 'Something\'s not quite right... Your request is invalid. Please fix it before trying again.');
     req.throwOn(401, ApiError, 'Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.');
