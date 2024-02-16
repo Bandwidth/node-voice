@@ -381,6 +381,7 @@ describe("Transfer", () => {
 
             var transfer = new Transfer({
                 transferCallerId: "+18888888888",
+                transferCallerDisplayName: "test",
                 callTimeout: 3,
                 tag: "tagTransfer",
                 transferCompleteUrl: "https://testtransfer.com",
@@ -399,7 +400,7 @@ describe("Transfer", () => {
 
             var response = new Response(transfer);
 
-            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Transfer transferCallerId=\"+18888888888\" callTimeout=\"3\" tag=\"tagTransfer\" transferCompleteUrl=\"https://testtransfer.com\" transferCompleteMethod=\"GET\" username=\"usertransfer\" password=\"passtransfer\" diversionTreatment=\"none\" diversionReason=\"away\" transferCompleteFallbackUrl=\"https://test.com\" transferCompleteFallbackMethod=\"POST\" fallbackUsername=\"fusern\" fallbackPassword=\"fpassw\"><PhoneNumber transferAnswerUrl=\"https://test.com\" transferAnswerMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" transferAnswerFallbackUrl=\"https://test2.com\" transferAnswerFallbackMethod=\"GET\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\">+17777777777</PhoneNumber><SipUri uui=\"uui\" transferAnswerUrl=\"https://test3.com\" transferAnswerMethod=\"POST\" transferAnswerFallbackUrl=\"https://test4.com\" transferAnswerFallbackMethod=\"POST\" username=\"user2\" password=\"pass2\" fallbackUsername=\"fuser2\" fallbackPassword=\"fpass4\" tag=\"tag2\">sip-uri</SipUri></Transfer></Response>";
+            var expectedString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Transfer transferCallerId=\"+18888888888\" transferCallerDisplayName=\"test\" callTimeout=\"3\" tag=\"tagTransfer\" transferCompleteUrl=\"https://testtransfer.com\" transferCompleteMethod=\"GET\" username=\"usertransfer\" password=\"passtransfer\" diversionTreatment=\"none\" diversionReason=\"away\" transferCompleteFallbackUrl=\"https://test.com\" transferCompleteFallbackMethod=\"POST\" fallbackUsername=\"fusern\" fallbackPassword=\"fpassw\"><PhoneNumber transferAnswerUrl=\"https://test.com\" transferAnswerMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" transferAnswerFallbackUrl=\"https://test2.com\" transferAnswerFallbackMethod=\"GET\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\">+17777777777</PhoneNumber><SipUri uui=\"uui\" transferAnswerUrl=\"https://test3.com\" transferAnswerMethod=\"POST\" transferAnswerFallbackUrl=\"https://test4.com\" transferAnswerFallbackMethod=\"POST\" username=\"user2\" password=\"pass2\" fallbackUsername=\"fuser2\" fallbackPassword=\"fpass4\" tag=\"tag2\">sip-uri</SipUri></Transfer></Response>";
             expect(response.toBxml()).toEqual(expectedString);
         });
     });
