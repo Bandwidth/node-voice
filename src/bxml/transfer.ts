@@ -4,6 +4,8 @@ import { Verb } from './Verb'
 export interface TransferOptions  {
     transferCallerId?: string
 
+    transferCallerDisplayName?: string
+
     callTimeout?: number
 
     tag?: string
@@ -35,6 +37,8 @@ export interface TransferOptions  {
 
 export class Transfer implements TransferOptions, Verb {
     transferCallerId?: string
+
+    transferCallerDisplayName?: string
 
     callTimeout?: number
 
@@ -77,6 +81,7 @@ export class Transfer implements TransferOptions, Verb {
         this.username = options.username
         this.tag = options.tag
         this.transferCallerId = options.transferCallerId
+        this.transferCallerDisplayName = options.transferCallerDisplayName
         this.transferCompleteFallbackMethod = options.transferCompleteFallbackMethod
         this.transferCompleteFallbackUrl = options.transferCompleteFallbackUrl
         this.transferCompleteMethod = options.transferCompleteMethod
@@ -88,6 +93,10 @@ export class Transfer implements TransferOptions, Verb {
 
         if (this.transferCallerId !== undefined) {
             attributes['transferCallerId'] = this.transferCallerId
+        }
+
+        if (this.transferCallerDisplayName !== undefined) {
+            attributes['transferCallerDisplayName'] = this.transferCallerDisplayName
         }
 
         if (this.callTimeout !== undefined) {
