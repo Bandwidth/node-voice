@@ -38,10 +38,10 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@apimatic/core": "^0.7.6",
+    "@apimatic/core": "^0.10.5",
     "@apimatic/schema": "^0.6.0",
     "@types/node": "^14.18.21",
-    "axios": "^1.7.4",
+    "axios": "^1.13.5",
     "detect-node": "^2.0.4",
     "form-data": "^3.0.0",
     "lodash.flatmap": "^4.5.0",
